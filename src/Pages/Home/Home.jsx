@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa"; // react-icons library required
+import OtpValidation from "../../components/OtpValidation/OtpValidation";
 
 const Home = () => {
     const [profileMenuOpen, setProfileMenuOpen] = useState(false);
@@ -42,6 +43,8 @@ const Home = () => {
                     <button className="search-button">Search</button>
                 </div>
             </div>
+
+            <OtpValidation mobileNumber={"1234567890"}/>
         </>
     )
 }

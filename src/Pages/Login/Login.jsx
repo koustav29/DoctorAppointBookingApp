@@ -1,19 +1,27 @@
-import React from 'react';
-import './signup.css'; 
+import React,{useState} from 'react';
+import './Login.css'; 
 
-const SignUp = () => {
+const Login = () => {
+    const[otp,setOtp]=useState(0);
+
+    // Function to handle login
+    const handleLogin = () => {
+        setOtp(1);
+    };
+
+
+    
     return (
         <div className="auth-container">
             <div className="auth-form">
-                <h1>Signup</h1>
+                <h1>Log-in</h1>
                 <p>Please login using account detail below.</p>
                 <form>
-                    <input type="text" style={{ backgroundColor: 'white',borderColor:"rgb(35, 187, 184)",borderWidth:"2px"}} placeholder="User Name" required />
                     <input type="text" style={{ backgroundColor: 'white',borderColor:"rgb(35, 187, 184)",borderWidth:"2px"}} placeholder="Mobile Number / Email Address" required />
-                    <button type="submit" style={{ backgroundColor: 'rgb(35, 187, 184)',borderColor:"skyblue",borderWidth:"2px",fontWeight:"bold"}}>Sign Up</button>
+                    <button onClick={handleLogin} type="submit" style={{ backgroundColor: 'rgb(35, 187, 184)',borderColor:"skyblue",borderWidth:"2px",fontWeight:"bold"}}>Sign In</button>
                 </form>
                 <p>
-                    Already have an account? <a href="/login">Login</a>
+                    Don't have an account? <a href="/signup">Create Account</a>
                 </p>
                 <p>Or Login with</p>
                 <div className="social-login">
@@ -27,4 +35,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Login;
