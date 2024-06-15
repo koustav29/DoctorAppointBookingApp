@@ -4,6 +4,7 @@ import Input from "../../components/Input";
 function Category({ handleChange }) {
   return (
     <div>
+       <div className={open ? "sidebar-item open" : "sidebar-item"}>
       <h6 className="sidebar-title">By Test Samples</h6>
       <div>
         <label className="sidebar-label-container">
@@ -34,6 +35,7 @@ function Category({ handleChange }) {
           title="Category 4"
           name="test"
         />
+      </div>
       </div>
     </div>
   );

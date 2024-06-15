@@ -16,7 +16,7 @@ const Card = ({ img, title, star, reviews, prevPrice, newPrice }) => {
           <section className="location">
             <div className="location-icon">
               <p>
-                <FontAwesomeIcon icon={faLocationArrow} /> 123 Main Street, USA
+                <FontAwesomeIcon icon={faLocationArrow} /> Newtown, kolkata
               </p>
             </div>
           </section>

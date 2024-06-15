@@ -7,6 +7,9 @@
 .sidebar-items {
   margin-top: 20px;
 }
+.sidebar-item.open > .sidebar-content{
+  height: auto;
+}
 
 .sidebar-label-container {
   display: block;
