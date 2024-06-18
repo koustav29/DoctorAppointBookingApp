@@ -2,7 +2,7 @@ import { AiFillStar } from "react-icons/ai";
 
 const data = [
   {
-    img: 'assets/pic.jpeg',
+    img: "assets/pic.jpeg",
     title: "Lab test",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
@@ -35,17 +35,17 @@ const data = [
     color: "green",
     category: "sneakers",
   },
-  {
-    img: `assets/pic3.jpg`,
-    title: "Lab tests",
-    star: <AiFillStar className="rating-star" />,
-    reviews: "(123 reviews)",
-    prevPrice: "$140,00",
-    newPrice: "200",
-    company: "Adidas",
-    color: "black",
-    category: "sneakers",
-  },
+  // {
+  //   img: assets/pic3.jpg,
+  //   title: "Lab tests",
+  //   star: <AiFillStar className="rating-star" />,
+  //   reviews: "(123 reviews)",
+  //   prevPrice: "$140,00",
+  //   newPrice: "200",
+  //   company: "Adidas",
+  //   color: "black",
+  //   category: "sneakers",
+  // },
   {
     img: `assets/pic4.jpeg`,
     title: "Lab tests",
@@ -93,7 +93,7 @@ const data = [
     category: "flats",
   },
   {
-    img: 'assets/pic.jpeg',
+    img: "assets/pic.jpeg",
     title: "Lab test",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
@@ -102,8 +102,9 @@ const data = [
     company: "Nike",
     color: "white",
     category: "sneakers",
-  },  {
-    img: 'assets/pic.jpeg',
+  },
+  {
+    img: "assets/pic.jpeg",
     title: "Lab test",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
@@ -126,7 +127,7 @@ const data = [
     category: "flats",
   },
   // {
-  //   img: "https://m.media-amazon.com/images/I/71E75yRwCDL._AC_UY575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/71E75yRwCDL.AC_UY575.jpg",
   //   title: "Pacer Future Sneaker",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -137,7 +138,7 @@ const data = [
   //   category: "sneakers",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/71jeoX0rMBL._AC_UX575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/71jeoX0rMBL.AC_UX575.jpg",
   //   title: "Unisex-Adult Super",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -148,7 +149,7 @@ const data = [
   //   category: "sneakers",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/61TM6Q9dvxL._AC_UX575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/61TM6Q9dvxL.AC_UX575.jpg",
   //   title: "Roma Basic Sneaker",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -159,7 +160,7 @@ const data = [
   //   category: "sneakers",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/7128-af7joL._AC_UY575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/7128-af7joL.AC_UY575.jpg",
   //   title: "Pacer Future Doubleknit",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -171,7 +172,7 @@ const data = [
   // },
 
   // {
-  //   img: "https://m.media-amazon.com/images/I/81xXDjojYKS._AC_UX575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/81xXDjojYKS.AC_UX575.jpg",
   //   title: "Fusion Evo Golf Shoe",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -182,7 +183,7 @@ const data = [
   //   category: "sneakers",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/719gdz8lsTS._AC_UX575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/719gdz8lsTS.AC_UX575.jpg",
   //   title: "Rainbow Chex Skate",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -193,7 +194,7 @@ const data = [
   //   category: "flats",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/71gpFHJlnoL._AC_UX575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/71gpFHJlnoL.AC_UX575.jpg",
   //   title: "Low-Top Trainers",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -204,7 +205,7 @@ const data = [
   //   category: "sandals",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/71pf7VFs9CL._AC_UX575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/71pf7VFs9CL.AC_UX575.jpg",
   //   title: "Vans Unisex Low-Top",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -215,7 +216,7 @@ const data = [
   //   category: "sandals",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/61N4GyWcHPL._AC_UY575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/61N4GyWcHPL.AC_UY575.jpg",
   //   title: "Classic Bandana Sneakers",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -226,7 +227,7 @@ const data = [
   //   category: "sandals",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/61bncQ44yML._AC_UX695_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/61bncQ44yML.AC_UX695.jpg",
   //   title: "Chunky High Heel",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -237,7 +238,7 @@ const data = [
   //   category: "heels",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/71czu7WgGuL._AC_UY695_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/71czu7WgGuL.AC_UY695.jpg",
   //   title: "Slip On Stiletto High Heel",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -248,7 +249,7 @@ const data = [
   //   category: "heels",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/61men05KRxL._AC_UY625_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/61men05KRxL.AC_UY625.jpg",
   //   title: "DREAM PAIRS Court Shoes",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -259,7 +260,7 @@ const data = [
   //   category: "heels",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/519MRhRKGFL._AC_UX575_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/519MRhRKGFL.AC_UX575.jpg",
   //   title: "Nike Air Vapormax Plus",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -271,7 +272,7 @@ const data = [
   // },
 
   // {
-  //   img: "https://m.media-amazon.com/images/I/51PGWTXgf-L._AC_UY625_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/51PGWTXgf-L.AC_UY625.jpg",
   //   title: "Low Mid Block Heels",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -282,7 +283,7 @@ const data = [
   //   category: "heels",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/616sA5XUKtL._AC_UY675_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/616sA5XUKtL.AC_UY675.jpg",
   //   title: "Chunky High Heel",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -293,7 +294,7 @@ const data = [
   //   category: "heels",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/71h5+MbEK7L._AC_UY625_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/71h5+MbEK7L.AC_UY625.jpg",
   //   title: "Amore Fashion Stilettos",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -304,7 +305,7 @@ const data = [
   //   category: "heels",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/61uw5RDxKQL._AC_UY625_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/61uw5RDxKQL.AC_UY625.jpg",
   //   title: "Bridal Sandals Glitter",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",
@@ -315,7 +316,7 @@ const data = [
   //   category: "heels",
   // },
   // {
-  //   img: "https://m.media-amazon.com/images/I/71yhoZP0l6L._AC_UY695_.jpg",
+  //   img: "https://m.media-amazon.com/images/I/71yhoZP0l6L.AC_UY695.jpg",
   //   title: "Wedding Prom Bridal",
   //   star: <AiFillStar className="rating-star" />,
   //   reviews: "(123 reviews)",

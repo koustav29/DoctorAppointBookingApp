@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { FaUserCircle } from "react-icons/fa"; // react-icons library required
 import OtpValidation from "../../components/OtpValidation/OtpValidation";
+import "./Home.css";
+import { Link } from "react-router-dom";
+import Slider from "../../components/Slider/Slider";
 
 const Home = () => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
@@ -14,10 +17,10 @@ const Home = () => {
         <div className="logo">LOGO</div>
         <input type="text" className="search-bar" placeholder="Search..." />
         <nav className="nav-items">
-          <a href="home">Home</a>
+          <a href="/">Home</a>
           <a href="about">About Us</a>
           <a href="listing">Services</a>
-          <a href="labs">Labs</a>
+          <a href="details">Labs</a>
           <a href="news">News</a>
           <a href="contact">Contact</a>
         </nav>
@@ -43,8 +46,8 @@ const Home = () => {
           <button className="search-button">Search</button>
         </div>
       </div>
-
-      <OtpValidation mobileNumber={"1234567890"} />
+      <Slider />
+      {/* <OtpValidation mobileNumber={"1234567890"} /> */}
     </>
   );
 };

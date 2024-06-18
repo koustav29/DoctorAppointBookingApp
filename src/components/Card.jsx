@@ -20,7 +20,9 @@ const Card = ({ img, title, star, reviews, prevPrice, newPrice }) => {
               </p>
             </div>
           </section>
-          <button className="tests">View Tests</button>
+          <a href="details">
+            <button className="tests">View Tests</button>
+          </a>
         </div>
       </section>
     </>

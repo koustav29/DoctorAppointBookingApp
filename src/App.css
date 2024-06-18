@@ -72,11 +72,12 @@ body {
 }
 
 .background-image {
-  background-image: url("../src/assets/sebastopol_lagoon-2560x1600.jpg"); /* Add your background image path here */
+  background-image: url("../public/assets/pic3.jpg"); /* Add your background image path here */
   height: 500px;
   width: 100vw;
   background-size: cover;
   background-position: center;
+  padding: 20px;
   position: relative; /* Ensure the search-section can be centered correctly */
   display: flex;
   justify-content: center;
