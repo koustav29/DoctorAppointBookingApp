@@ -7,6 +7,7 @@ import Login from "./Pages/Login/Login";
 import Listing from "./Pages/Listing/Listing";
 import About from "./Pages/About/About";
 import Details from "./Pages/Details/Details";
+import Dashboard from "./Pages/Lab-dashboard/Lab-dashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/listing" element={<Listing />} />
         <Route path="/about" element={<About />} />
         <Route path="/details" element={<Details />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );

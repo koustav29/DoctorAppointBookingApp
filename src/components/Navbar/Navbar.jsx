@@ -1,5 +1,7 @@
 // src/components/Navbar.js
 import React from "react";
+import "./Navbar.css";
+import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom"; // If using React Router for navigation
 
 const Navbar = () => {
@@ -7,7 +9,12 @@ const Navbar = () => {
     <>
       <div className="top-menu">
         <div className="logo">LOGO</div>
-        <input type="text" className="search-bar" placeholder="Search..." />
+        <div className="search-bar">
+          <input type="text" placeholder="Search" />
+          <button className="search-button">
+            <FaSearch />
+          </button>
+        </div>
         <nav className="nav-items">
           <a href="/">Home</a>
           <a href="about">About Us</a>

@@ -4,6 +4,9 @@ import OtpValidation from "../../components/OtpValidation/OtpValidation";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import Slider from "../../components/Slider/Slider";
+import { FaSearch } from "react-icons/fa";
+import AppointmentForm from "../../components/AppointmentForm/AppointmentForm";
+import Testimonial from "../../components/Testimonial/Testimonial";
 
 const Home = () => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
@@ -15,12 +18,18 @@ const Home = () => {
     <>
       <div className="top-menu">
         <div className="logo">LOGO</div>
-        <input type="text" className="search-bar" placeholder="Search..." />
+        <div className="search-bar">
+          <input type="text" placeholder="Search" />
+          <button className="search-button">
+            <FaSearch />
+          </button>
+        </div>
         <nav className="nav-items">
-          <a href="/">Home</a>
+          <Link to="/home"></Link>
+
           <a href="about">About Us</a>
           <a href="listing">Services</a>
-          <a href="details">Labs</a>
+          <a href="labs">Labs</a>
           <a href="news">News</a>
           <a href="contact">Contact</a>
         </nav>
@@ -36,18 +45,36 @@ const Home = () => {
         </div>
       </div>
       <div className="background-image">
-        <div className="search-section">
+        {/* <div className="search-section">
           <input
             type="text"
             className="location-input"
             placeholder="Enter location..."
           />
+          
           <input type="date" className="appointment-date" />
           <button className="search-button">Search</button>
-        </div>
+        </div> */}
       </div>
+
+      <AppointmentForm />
+      <br></br>
+      <br></br>
+
+      <center>
+        {" "}
+        <h1>Recent Lab List</h1>
+      </center>
       <Slider />
+      <br></br>
+      <br></br>
+      <br></br>
       {/* <OtpValidation mobileNumber={"1234567890"} /> */}
+      <Testimonial />
+      <br></br>
+      <br></br>
+      <br></br>
+      <Slider />
     </>
   );
 };
