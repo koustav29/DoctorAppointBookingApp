@@ -1,49 +1,65 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+
+const Dashboard = () => <div>Dashboard Content</div>;
+// const Labs = () => <div>Labs Content</div>;
+// const Support = () => <div>Support Content</div>;
+// const Patients = () => <div>Patients Content</div>;
+const Bookings = () => <div>Bookings Content</div>;
+// const Team = () => <div>Team Content</div>;
+// const Calendar = () => <div>Calendar Content</div>;
 
 const Sidebar = () => {
   return (
-    <div className="w-1/5 bg-gray-100 p-5 h-screen">
-      <div className="flex flex-col items-center">
-        <img
-          src="path/to/profile-image"
-          alt="Profile"
-          className="rounded-full w-16 h-16 mb-4"
-        />
-        <h2 className="text-lg font-bold">LAB 1 2 3</h2>
+    <Router>
+      <div style={{ display: "flex" }}>
+        <div style={{ width: "200px", background: "#f0f0f0", padding: "10px" }}>
+          <div style={{ marginBottom: "20px", textAlign: "center" }}>
+            <img
+              src="path/to/logo.png"
+              alt="Logo"
+              style={{ width: "50px", borderRadius: "50%" }}
+            />
+            <h3>LAB 1 2 3</h3>
+          </div>
+          <ul style={{ listStyleType: "none", padding: 0 }}>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            {/* <li>
+              <Link to="/labs">Labs</Link>
+            </li>
+            <li>
+              <Link to="/support">Support</Link>
+            </li>
+            <li>
+              <Link to="/patients">Patients</Link>
+            </li> */}
+            <li>
+              <Link to="/bookings">Bookings</Link>
+            </li>
+            {/* <li>
+              <Link to="/team">Team</Link>
+            </li>
+            <li>
+              <Link to="/calendar">Calendar</Link>
+            </li> */}
+          </ul>
+        </div>
+
+        <div style={{ marginLeft: "20px", padding: "10px", flex: 1 }}>
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            {/* <Route path="/labs" element={<Labs />} />
+            <Route path="/support" element={<Support />} />
+            <Route path="/patients" element={<Patients />} /> */}
+            <Route path="/bookings" element={<Bookings />} />
+            {/* <Route path="/team" element={<Team />} />
+            <Route path="/calendar" element={<Calendar />} /> */}
+          </Routes>
+        </div>
       </div>
-      <nav className="mt-10">
-        <ul>
-          <li className="flex items-center p-2 my-2 bg-teal-200 rounded-lg">
-            <span className="material-icons mr-2">dashboard</span>
-            <span>Dashboard</span>
-          </li>
-          <li className="flex items-center p-2 my-2">
-            <span className="material-icons mr-2">science</span>
-            <span>Labs</span>
-          </li>
-          <li className="flex items-center p-2 my-2">
-            <span className="material-icons mr-2">support_agent</span>
-            <span>Support</span>
-          </li>
-          <li className="flex items-center p-2 my-2">
-            <span className="material-icons mr-2">people</span>
-            <span>Patients</span>
-          </li>
-          <li className="flex items-center p-2 my-2">
-            <span className="material-icons mr-2">book_online</span>
-            <span>Bookings</span>
-          </li>
-          <li className="flex items-center p-2 my-2">
-            <span className="material-icons mr-2">group</span>
-            <span>Team</span>
-          </li>
-          <li className="flex items-center p-2 my-2">
-            <span className="material-icons mr-2">calendar_today</span>
-            <span>Calendar</span>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    </Router>
   );
 };
 

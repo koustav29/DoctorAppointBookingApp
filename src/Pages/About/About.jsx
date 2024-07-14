@@ -5,12 +5,10 @@ function About() {
   return (
     <>
       <div className="about-us">
-        <h1 className="about-us-heading">About Adva8</h1>
         <div className="about-us-content">
-          <div className="about-us-photo">
-            <img src="/assets/pic4.jpg" alt="About Us" className="photo" />
-          </div>
+          <div className="about-us-photo"></div>
           <div className="about-us-text">
+            <h1 className="about-us-heading">About Adva8</h1>
             <p>
               Adva8 is a leading healthcare startup that specializes in helping
               clients find, book, and track their health checkups in the most

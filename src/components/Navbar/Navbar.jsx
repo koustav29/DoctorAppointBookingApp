@@ -1,10 +1,16 @@
 // src/components/Navbar.js
-import React from "react";
+import React, { useState } from "react";
+import { FaUserCircle } from "react-icons/fa";
 import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom"; // If using React Router for navigation
 
 const Navbar = () => {
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+
+  const toggleProfileMenu = () => {
+    setProfileMenuOpen(!profileMenuOpen);
+  };
   return (
     <>
       <div className="top-menu">
@@ -20,9 +26,19 @@ const Navbar = () => {
           <a href="about">About Us</a>
           <a href="listing">Services</a>
           <a href="labs">Labs</a>
-          <a href="news">News</a>
+          <a href="blog">Blogs</a>
           <a href="contact">Contact</a>
         </nav>
+        <div className="profile" onClick={toggleProfileMenu}>
+          <FaUserCircle size={28} />
+          {profileMenuOpen && (
+            <div className="profile-dropdown">
+              <a href="login">Login</a>
+              <a href="signup">Sign Up</a>
+              <a href="edit-profile">Edit Profile</a>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

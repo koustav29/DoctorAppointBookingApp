@@ -3,6 +3,7 @@ import { FaUserCircle } from "react-icons/fa"; // react-icons library required
 import OtpValidation from "../../components/OtpValidation/OtpValidation";
 import "./Home.css";
 import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar/Navbar";
 import Slider from "../../components/Slider/Slider";
 import { FaSearch } from "react-icons/fa";
 import AppointmentForm from "../../components/AppointmentForm/AppointmentForm";
@@ -16,7 +17,7 @@ const Home = () => {
   };
   return (
     <>
-      <div className="top-menu">
+      {/* <div className="top-menu">
         <div className="logo">LOGO</div>
         <div className="search-bar">
           <input type="text" placeholder="Search" />
@@ -43,7 +44,8 @@ const Home = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
+      <Navbar />
       <div className="background-image">
         {/* <div className="search-section">
           <input

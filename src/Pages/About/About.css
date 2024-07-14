@@ -64,6 +64,8 @@ body {
     }
     
     .about-us-heading {
+      display: flex;
+      justify-content: center;
       text-align: center;
       font-size: 32px;
       color: #007777;
@@ -81,18 +83,20 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-image: url("../public/assets/pic4.jpg");
+      background-image: url("../public/assets/pic4.jpeg"); 
       background-size: cover;
       background-position: center;
-      padding: 20px;
+      padding: 30px;
+      height: 60vh;
     }
     
-    .photo {
+    /* .photo {
       width: 300px;
       height: 300px;
       object-fit: cover;
       border-radius: 10px;
-    }
+      background-image: url("../public/assets/pic3.jpg"); 
+    } */
     
     .about-us-text {
       flex: 2;

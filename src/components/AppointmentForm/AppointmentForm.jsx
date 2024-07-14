@@ -31,7 +31,9 @@ const AppointmentForm = () => {
         </div>
         <div className="input-group">
           <label>
-            <FaCalendarAlt className="icon" />
+            <button className="tab-button">
+              <FaCalendarAlt className="icon" />
+            </button>
             <input type="text" placeholder="DD-Month, 20YY" />
           </label>
         </div>
