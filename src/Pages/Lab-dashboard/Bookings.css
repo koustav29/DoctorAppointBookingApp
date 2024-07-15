@@ -1,88 +1,91 @@
-.dashboard {
-    display: flex;
-  }
-  .content {
-    padding: 20px;
-    flex: 1;
-  }
-  .lab-details {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  .lab-details .profile {
-    text-align: center;
-    margin-right: 20px;
-  }
-  .lab-details .profile img {
-    border-radius: 50%;
-    width: 80px;
-  }
-  .bookings {
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
-  }
-  .bookings .tabs {
-    display: flex;
-    margin-bottom: 20px;
-  }
-  .bookings .tabs button {
-    margin-right: 10px;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-  }
-  .bookings .tabs button.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-  .bookings-log {
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-  }
-  .booking {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-  }
-  .booking .patient-info {
-    display: flex;
-    align-items: center;
-  }
-  .booking .patient-info img {
-    border-radius: 50%;
-    width: 50px;
-    margin-right: 10px;
-  }
-  .booking .actions {
-    display: flex;
-    align-items: center;
-  }
-  .booking .actions button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-  }
-  .booking .actions .accept {
-    background-color: #4CAF50;
-    color: white;
-  }
-  .booking .actions .decline {
-    background-color: #f44336;
-    color: white;
-  }
-  .booking .actions .view-details {
-    background-color: #2196F3;
-    color: white;
-  }
-  .export-data {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+/* LabDetails.css */
+.lab-details-container {
+  padding: 20px;
+  margin-top: 10vh;
+  margin-left: 20vw;
+}
+
+.lab-details-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.lab-logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.bookings-section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.bookings-log {
+  margin-top: 20px;
+}
+
+.booking-entry {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.patient-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.booking-info {
+  flex-grow: 1;
+}
+
+.booking-actions {
+  margin-right: 20px;
+}
+
+.accept-button, .decline-button, .view-details-button, .export-data-button {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.accept-button {
+  background: #28a745;
+}
+
+.decline-button {
+  background: #dc3545;
+  margin-left: 10px;
+}
+
+.view-details-button {
+  background: #007bff;
+}
+
+.export-data-button {
+  background: #28a745;
+  margin-top: 20px;
+}
+
+.status-waiting {
+  color: #ffc107;
+}
+
+.status-declined {
+  color: #dc3545;
+}
+
+.status-confirmed {
+  color: #28a745;
+}

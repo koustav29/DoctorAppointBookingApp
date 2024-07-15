@@ -1,10 +1,11 @@
 import React from "react";
 import "./Lab-dashboard.css";
+import Sidebar from "./Sidebar.jsx";
 
 const Dashboard = () => {
   return (
     <div className="dashboard">
-      <aside className="sidebar">
+      {/* <aside className="sidebar">
         <div className="logo">
           <img src="path_to_logo_image" alt="Lab Logo" />
           <span>LAB 1 2 3</span>
@@ -22,7 +23,7 @@ const Dashboard = () => {
           <a href="#" className="menu-item">
             Patients
           </a>
-          <a href="#" className="menu-item">
+          <a href="/bookings" className="menu-item">
             Bookings
           </a>
           <a href="#" className="menu-item">
@@ -32,7 +33,8 @@ const Dashboard = () => {
             Calendar
           </a>
         </nav>
-      </aside>
+      </aside> */}
+      <Sidebar />
       <main className="main-content">
         <div className="stats">
           <div className="stat-card">
