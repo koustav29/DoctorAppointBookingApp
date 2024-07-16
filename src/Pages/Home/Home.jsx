@@ -46,6 +46,7 @@ const Home = () => {
         </div>
       </div> */}
       <Navbar />
+
       <div className="background-image">
         {/* <div className="search-section">
           <input
