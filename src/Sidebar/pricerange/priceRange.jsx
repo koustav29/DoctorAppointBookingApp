@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./PriceRange.css";
 
 function PriceRange() {
-  
-   const [priceMin, setPriceMin] = useState(0);
+  const [priceMin, setPriceMin] = useState(0);
   const [priceMax, setPriceMax] = useState(999999);
-
-
 
   const handlePriceChange = (event) => {
     const value = parseInt(event.target.value, 10);
@@ -17,17 +14,15 @@ function PriceRange() {
 
   const handleApply = () => {
     // Handle filter application with the selected values
-    console.log('Applied Filters:', {
+    console.log("Applied Filters:", {
       price: { min: priceMin, max: priceMax },
     });
   };
 
   return (
     <>
-      
       <h6 className="sidebar-title">Price Range</h6>
-        <div className='cantainer text-align-center'>
-       
+      <div className="cantainer text-align-center">
         <div className="flex">
           <input
             type="range"
@@ -53,16 +48,12 @@ function PriceRange() {
           onChange={(event) => setPriceMax(parseInt(event.target.value, 10))}
           className="w-10 pl-2 pr-2 text-sm text-gray-700"
         />
-      </div> 
-      <div class="container">
-        <button
-  onClick={handleApply}
-  className="button"
->
-  Apply
-</button>
-</div>
-    
+      </div>
+      <div className="container">
+        <button onClick={handleApply} className="button">
+          Apply
+        </button>
+      </div>
     </>
   );
 }

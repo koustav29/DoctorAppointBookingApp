@@ -10,7 +10,6 @@
 .card {
   margin: 20px;
   border: 2px solid #ededed;
-  padding: 20px;
   box-shadow:  0px 10px 8px #727f7e;
   cursor: pointer;
   max-width: 80%;

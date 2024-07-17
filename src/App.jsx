@@ -9,6 +9,7 @@ import About from "./Pages/About/About";
 import Details from "./Pages/Details/Details";
 import Dashboard from "./Pages/Lab-dashboard/Lab-dashboard";
 import Bookings from "./Pages/Lab-dashboard/Bookings";
+import OtpValidation from "./components/OtpValidation/OtpValidation";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/otp" element={<OtpValidation />} />
         <Route path="/listing" element={<Listing />} />
         <Route path="/about" element={<About />} />
         <Route path="/details" element={<Details />} />

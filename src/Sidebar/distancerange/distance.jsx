@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./distance.css";
 
 function FilterForm() {
@@ -23,7 +23,7 @@ function FilterForm() {
 
   const handleApply = () => {
     // Handle filter application with the selected values
-    console.log('Applied Filters:', {
+    console.log("Applied Filters:", {
       distance: { min: distanceMin, max: distanceMax },
       price: { min: priceMin, max: priceMax },
     });
@@ -31,9 +31,8 @@ function FilterForm() {
 
   return (
     <>
-    <div>
-    
-       <h6 className="sidebar-title">Distance Range</h6>
+      <div>
+        <h6 className="sidebar-title">Distance Range</h6>
         <div className="flex">
           <input
             type="range"
@@ -43,17 +42,17 @@ function FilterForm() {
             onChange={handleDistanceChange}
             className=" h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
           />
-            </div>
-          
-          <input
-            type="number"
-            min="0"
-            max="100"
-            value={distanceMin}
-            onChange={handleDistanceChange}
-            className="w-20 pl-2 pr-2 text-sm text-black-700"
-          />
-      
+        </div>
+
+        <input
+          type="number"
+          min="0"
+          max="100"
+          value={distanceMin}
+          onChange={handleDistanceChange}
+          className="w-20 pl-2 pr-2 text-sm text-black-700"
+        />
+
         <input
           type="number"
           min="0"
@@ -62,18 +61,13 @@ function FilterForm() {
           onChange={(event) => setDistanceMax(parseInt(event.target.value, 10))}
           className="w-20 pl-2 pr-2 text-sm text-black-700"
         />
-       </div>
-        <div class="container">
-        <button
-  onClick={handleApply}
-  className="button"
->
-  Apply
-</button>
-</div>
-    
-      
-      
+      </div>
+      <div className="container">
+        <button onClick={handleApply} className="button">
+          Apply
+        </button>
+      </div>
+
       {/* <div className="mb-4">
         <h3 className="text-lg font-bold mb-2">Price Range</h3>
         <div className="flex items-center mb-2">
@@ -107,7 +101,6 @@ function FilterForm() {
       >
         Apply
       </button> */}
-    
     </>
   );
 }

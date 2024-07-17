@@ -19,7 +19,7 @@ function Listing() {
   };
 
   const filteredItems = products.filter(
-    (product) => product.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+    (product) => product.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
   );
 
   // ----------- Radio Filtering -----------
@@ -43,21 +43,16 @@ function Listing() {
     // Applying selected filter
     if (selected) {
       filteredProducts = filteredProducts.filter(
-        ({ category, color, company, newPrice, title }) =>
-          category === selected ||
-          color === selected ||
-          company === selected ||
-          newPrice === selected ||
-          title === selected
+        ({ type, name }) => type === selected || name === selected
       );
     }
 
     return filteredProducts.map(
-      ({ img, title, star, reviews, prevPrice, newPrice }) => (
+      ({ img, name, star, reviews, prevPrice, newPrice }) => (
         <Card
           key={Math.random()}
           img={img}
-          title={title}
+          name={name}
           star={star}
           reviews={reviews}
           prevPrice={prevPrice}
@@ -78,6 +73,5 @@ function Listing() {
     </>
   );
 }
-
 
 export default Listing;

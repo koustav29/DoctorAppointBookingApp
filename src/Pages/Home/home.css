@@ -1,5 +1,7 @@
 /* for home stylising  *//* for home stylising  */
-
+.card-slider{
+  margin-top: 10vh;
+}
 /* src/SearchBar.css */
 .search-bar {
     display: flex;

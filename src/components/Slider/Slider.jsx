@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -12,8 +14,8 @@ function Sp() {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToShow: 4,
+    slidesToScroll: 4,
     initialSlide: 0,
     responsive: [
       {
@@ -43,26 +45,26 @@ function Sp() {
     ],
   };
 
-  // const handleErrorImage = (data) => {
-  //   setDefaultImage((prev) => ({
-  //     ...prev,
-  //     [data.target.alt]: data.target.alt,
-  //     linkDefault: imgGirl,
-  //   }));
-  // };
-
   return (
     <section className="App">
       <Slider {...settings}>
         {dt.map((item) => (
           <section className="card">
             <div className="card-top">
-              <img src={item.img} />
-              <h3>{item.title}</h3>
+              <img src={item.imageUrls} height={10} />
+              <h3>{item.name}</h3>
+              <h2>{item.type}</h2>
             </div>
             <div className="card-bottom">
-              <h3>{item.price}</h3>
-              <span className="category">{item.category}</span>
+              <section className="location">
+                <div className="location-icon">
+                  <FontAwesomeIcon icon={faLocationArrow} />
+                </div>
+                <p>{item.address}</p>
+              </section>
+              <a href="details">
+                <button className="tests">View Tests and Packages</button>
+              </a>
             </div>
           </section>
         ))}

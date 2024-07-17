@@ -48,27 +48,20 @@ const Home = () => {
       <Navbar />
 
       <div className="background-image">
-        {/* <div className="search-section">
-          <input
-            type="text"
-            className="location-input"
-            placeholder="Enter location..."
-          />
-          
-          <input type="date" className="appointment-date" />
-          <button className="search-button">Search</button>
-        </div> */}
+        <AppointmentForm />
       </div>
 
-      <AppointmentForm />
       <br></br>
       <br></br>
 
-      <center>
-        {" "}
-        <h1>Recent Lab List</h1>
-      </center>
-      <Slider />
+      <div className="card-slider">
+        <center>
+          {" "}
+          <h1>Recent Lab List</h1>
+        </center>
+        <Slider />
+      </div>
+
       <br></br>
       <br></br>
       <br></br>

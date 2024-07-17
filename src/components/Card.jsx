@@ -1,32 +1,35 @@
 import { IconBase } from "react-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import dt from "../db/data";
+import React, { useState } from "react";
 
-const Card = ({ img, title, star, reviews, prevPrice, newPrice }) => {
+function Card() {
+  const [defaultImage, setDefaultImage] = useState({});
   return (
     <>
-      <section className="card">
-        <img src={img} alt={title} className="card-img" />
-        <div className="card-details">
-          <h3 className="card-title">{title}</h3>
-          <section className="card-reviews">
-            {star} {star} {star} {star} {star}
-            {/* <span className="total-reviews">{reviews}</span> */}
-          </section>
-          <section className="location">
-            <div className="location-icon">
-              <p>
-                <FontAwesomeIcon icon={faLocationArrow} /> Newtown, kolkata
-              </p>
-            </div>
-          </section>
-          <a href="details">
-            <button className="tests">View Tests</button>
-          </a>
-        </div>
-      </section>
+      {dt.map((item) => (
+        <section className="card">
+          <div className="card-top">
+            <img src={item.imageUrls} height={10} />
+            <h3>Lab Name</h3>
+            <h2>Neurology</h2>
+          </div>
+          <div className="card-bottom">
+            <section className="location">
+              <div className="location-icon">
+                <FontAwesomeIcon icon={faLocationArrow} />
+              </div>
+              <p>{item.address}</p>
+            </section>
+            <a href="details">
+              <button className="tests">View Tests and Packages</button>
+            </a>
+          </div>
+        </section>
+      ))}
     </>
   );
-};
+}
 
 export default Card;
