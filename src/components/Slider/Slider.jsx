@@ -48,12 +48,16 @@ function Sp() {
   return (
     <section className="App">
       <Slider {...settings}>
-        {dt.map((item) => (
-          <section className="card">
+        {dt.map((item, index) => (
+          <section className="card" key={index}>
             <div className="card-top">
               <img src={item.imageUrls} height={10} />
-              <h3>{item.name}</h3>
-              <h2>{item.type}</h2>
+              <div className="lab-info-listing">
+                <span>
+                  {item.name}
+                  <br /> {item.type}
+                </span>
+              </div>
             </div>
             <div className="card-bottom">
               <section className="location">

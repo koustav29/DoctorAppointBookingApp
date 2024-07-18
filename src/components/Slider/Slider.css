@@ -7,9 +7,10 @@
   box-sizing: border-box;
 }
 
-.slick-slide > div {
+.slick-slide>div {
   margin: 2 2px;
 }
+
 .slick-list {
   margin: 1 0px;
 }
@@ -22,56 +23,78 @@
   cursor: pointer;
   max-width: 80%;
   overflow: hidden;
-  width: 15vw !important;
-  height: 40vh;
+  /* width: 15vw !important; */
+  /* height: 40vh; */
   color: #fff;
   cursor: pointer;
 }
 
-.card-top h3 {
+.card-top span {
+  font-size: 0.8rem;
+  margin-top: 15px;
+  /* width: 300px; */
+  color: #007777;
+  /* margin-left: 5vw; */
+  padding: 0 15px;
+  text-align: center;
+}
+
+/* .card-top h2 {
   font-size: 0.5rem;
   margin-top: 1vh;
   width: 300px;
   color: #007777;
   margin-left: 5vw;
-}
+} */
 
-.card-top h2 {
-  font-size: 0.5rem;
-  margin-top: 1vh;
-  width: 300px;
-  color: #007777;
-  margin-left: 5vw;
-}
-
-.card-top > img {
+.card-top>img {
   width: 100%;
-  object-fit:fill;
-  height: 60%;
- 
-  
+  object-fit: fill;
+  height: 50vh;
 }
 
 .card-bottom {
-  margin: 10px 20px;
+  margin: 10px 0px 0;
+
+  button {
+    font-size: 16px;
+  }
 }
 
 .location {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center !important;
+  gap: 10px;
+  padding: 0 10px;
+
+  p {
+    font-size: 12px;
+    color: black;
+    min-height: 40px;
+
+    @media screen and (min-width: 1400px) {
+      min-height: 50px;
+    }
+  }
 }
+
 .location-icon {
-font-size: 0.8rem;
+  font-size: 0.8rem;
 }
 
 
-.tests{
+.tests {
   background-color: #17f0de;
   width: 100%;
-  padding: 1rem;
-  margin-top: 10vh;
+  padding: 10px !important;
+  /* margin-top: 10vh; */
 }
+
 .category {
   position: fixed;
+}
+
+.lab-info-listing {
+  display: flex;
+  justify-content: center;
 }
