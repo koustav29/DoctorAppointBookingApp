@@ -16,9 +16,11 @@ function Details() {
               Lorem ipsum dolor sit amet consectetur Address, Area, City
             </p>
           </div>
-          <button className="px-6 py-2 bg-teal-500 text-white rounded-md">
-            Make Booking
-          </button>
+          <a href="/make-booking">
+            <button className="px-6 py-2 bg-teal-500 text-white rounded-md">
+              Make Booking
+            </button>
+          </a>
         </div>
         <p className="mt-6 text-gray-700">
           Lorem ipsum dolor sit amet consectetur. Nunc quis vel nunc facilisis

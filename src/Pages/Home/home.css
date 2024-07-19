@@ -1,6 +1,8 @@
 /* for home stylising  *//* for home stylising  */
 .card-slider{
-  margin-top: 10vh;
+  margin-top: 15vh;
+  color: #56BBB3;
+  font-size:larger ;
 }
 /* src/SearchBar.css */
 .search-bar {

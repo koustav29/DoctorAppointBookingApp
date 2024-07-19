@@ -17,34 +17,6 @@ const Home = () => {
   };
   return (
     <>
-      {/* <div className="top-menu">
-        <div className="logo">LOGO</div>
-        <div className="search-bar">
-          <input type="text" placeholder="Search" />
-          <button className="search-button">
-            <FaSearch />
-          </button>
-        </div>
-        <nav className="nav-items">
-          <Link to="/home"></Link>
-
-          <a href="about">About Us</a>
-          <a href="listing">Services</a>
-          <a href="labs">Labs</a>
-          <a href="news">News</a>
-          <a href="contact">Contact</a>
-        </nav>
-        <div className="profile" onClick={toggleProfileMenu}>
-          <FaUserCircle size={28} />
-          {profileMenuOpen && (
-            <div className="profile-dropdown">
-              <a href="login">Login</a>
-              <a href="signup">Sign Up</a>
-              <a href="edit-profile">Edit Profile</a>
-            </div>
-          )}
-        </div>
-      </div> */}
       <Navbar />
 
       <div className="background-image">
@@ -56,21 +28,23 @@ const Home = () => {
 
       <div className="card-slider">
         <center>
-          {" "}
           <h1>Recent Lab List</h1>
         </center>
         <Slider />
       </div>
-
       <br></br>
       <br></br>
       <br></br>
-      {/* <OtpValidation mobileNumber={"1234567890"} /> */}
+      <div className="card-slider">
+        <center>
+          <h1>Labs based on your preference</h1>
+        </center>
+        <Slider />
+      </div>
+      <br></br>
+      <br></br>
+      <br></br>
       <Testimonial />
-      <br></br>
-      <br></br>
-      <br></br>
-      <Slider />
     </>
   );
 };
