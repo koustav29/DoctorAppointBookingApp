@@ -14,7 +14,7 @@
   }
   
   form {
-    background: #fff;
+    background: #ffffff;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -70,7 +70,7 @@
   }
   button {
     background: #2ecc71;
-    color: #fff;
+    color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -98,7 +98,7 @@
   
   .submit-button{ 
     background: #2ecc71;
-    color: #fff;
+    color: #ffffff;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -106,4 +106,24 @@
     /* display: flex;
     justify-content: center;
     align-items: center; */
+  }
+  .test-card {
+    position: relative;
+    /* ... (other existing styles) */
+  }
+  
+  .delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ff0000;
+    background-color: transparent;
+    border: none;
+    padding: 5px;
+  }
+  
+  .delete-button:hover {
+    color: #cc0000;
   }

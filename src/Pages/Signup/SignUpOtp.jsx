@@ -1,7 +1,7 @@
 import React from "react";
 import "./signup.css";
 
-const SignUp = () => {
+const SignUpOtp = () => {
   return (
     <div className="auth-container">
       <div className="auth-form">
@@ -25,17 +25,7 @@ const SignUp = () => {
               borderColor: "rgb(35, 187, 184)",
               borderWidth: "2px",
             }}
-            placeholder="Email Address"
-            required
-          />
-          <input
-            type="password"
-            style={{
-              backgroundColor: "white",
-              borderColor: "rgb(35, 187, 184)",
-              borderWidth: "2px",
-            }}
-            placeholder="Password"
+            placeholder="Mobile Number"
             required
           />
           <button
@@ -51,7 +41,7 @@ const SignUp = () => {
           </button>
         </form>
         <p>
-          <a href="/signupotp">SignUp with Mobile number? Sign Up</a>
+          <a href="/signup">SignUp with Email Address? SignUp</a>
         </p>
         <p>
           <a href="/login">Already have an account? Login</a>
@@ -88,4 +78,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUpOtp;

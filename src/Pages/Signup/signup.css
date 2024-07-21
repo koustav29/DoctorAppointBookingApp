@@ -1,5 +1,6 @@
 .auth-container {
     display: flex;
+    margin-top: 10vh;
     width: 100vw;
     justify-content: center;
     align-items: center;
@@ -8,7 +9,7 @@
 }
 
 .auth-form {
-    background: #fff;
+    background: #ffffff;
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 2px 10px #dad6d61a;
@@ -21,7 +22,7 @@
     margin-bottom: 10px;    
     font-size: 30px;
     font-weight: bold;
-    color: black;
+    color: #191919;
 }
 
 .auth-form p {
@@ -39,7 +40,7 @@
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 2.5px;
-    color: black;
+    color: #191919;
 }
 
 .auth-form button {

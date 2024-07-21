@@ -3,7 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./Pages/Home/Home";
 import SignUp from "./Pages/Signup/SignUp";
+import SignUpOtp from "./Pages/Signup/SignUpOtp";
 import Login from "./Pages/Login/Login";
+import LoginOtp from "./Pages/Login/LoginOtp";
 import Listing from "./Pages/Listing/Listing";
 import About from "./Pages/About/About";
 import Details from "./Pages/Details/Details";
@@ -21,7 +23,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/signupotp" element={<SignUpOtp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/loginotp" element={<LoginOtp />} />
         <Route path="/otp" element={<OtpValidation />} />
         <Route path="/labs" element={<Labs />} />
         <Route path="/listing" element={<Listing />} />

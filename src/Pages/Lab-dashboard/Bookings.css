@@ -19,7 +19,7 @@
 }
 
 .bookings-section {
-  background: #fff;
+  background: #ffffff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -53,7 +53,7 @@
 
 .accept-button, .decline-button, .view-details-button, .export-data-button {
   background: #28a745;
-  color: #fff;
+  color: #ffffff;
   border: none;
   padding: 5px 10px;
   border-radius: 5px;

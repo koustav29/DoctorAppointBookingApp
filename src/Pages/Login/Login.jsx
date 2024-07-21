@@ -23,7 +23,17 @@ const Login = () => {
               borderColor: "rgb(35, 187, 184)",
               borderWidth: "2px",
             }}
-            placeholder="Mobile Number / Email Address"
+            placeholder="Email Address"
+            required
+          />
+          <input
+            type="password"
+            style={{
+              backgroundColor: "white",
+              borderColor: "rgb(35, 187, 184)",
+              borderWidth: "2px",
+            }}
+            placeholder="Password"
             required
           />
           <button
@@ -40,7 +50,10 @@ const Login = () => {
           </button>
         </form>
         <p>
-          Don't have an account? <a href="/signup">Create Account</a>
+          <a href="/loginotp">Login with OTP? Login</a>
+        </p>
+        <p>
+          <a href="/signup">Don't have an account? Create Account</a>
         </p>
         <p>Or Login with</p>
         <div className="social-login">
@@ -51,7 +64,7 @@ const Login = () => {
               alt=""
             />
           </a>
-          <a href="#" className="facebook">
+          {/* <a href="#" className="facebook">
             <img
               style={{ width: "30px", height: "30px" }}
               src="https://img.icons8.com/color/48/000000/facebook-new.png"
@@ -64,7 +77,7 @@ const Login = () => {
               src="https://img.icons8.com/color/48/000000/twitter.png"
               alt=""
             />
-          </a>
+          </a> */}
         </div>
         <a href="/" className="skip">
           Skip

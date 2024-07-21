@@ -1,11 +1,19 @@
-import React from "react";
-import "./signup.css";
+import React, { useState, useNavigate } from "react";
+import "./Login.css";
 
-const SignUp = () => {
+const LoginOtp = () => {
+  const [otp, setOtp] = useState(0);
+
+  // Function to handle login
+  const handleLogin = () => {
+    setOtp(1);
+  };
+  //   const navigate = useNavigate();
+  //   navigate("/otp");
   return (
     <div className="auth-container">
       <div className="auth-form">
-        <h1>Signup</h1>
+        <h1>Log-in</h1>
         <p>Please login using account detail below.</p>
         <form>
           <input
@@ -15,30 +23,11 @@ const SignUp = () => {
               borderColor: "rgb(35, 187, 184)",
               borderWidth: "2px",
             }}
-            placeholder="Full Name"
-            required
-          />
-          <input
-            type="text"
-            style={{
-              backgroundColor: "white",
-              borderColor: "rgb(35, 187, 184)",
-              borderWidth: "2px",
-            }}
-            placeholder="Email Address"
-            required
-          />
-          <input
-            type="password"
-            style={{
-              backgroundColor: "white",
-              borderColor: "rgb(35, 187, 184)",
-              borderWidth: "2px",
-            }}
-            placeholder="Password"
+            placeholder="Mobile Number"
             required
           />
           <button
+            onClick={(handleLogin) => navigate("/otp")}
             type="submit"
             style={{
               backgroundColor: "rgb(35, 187, 184)",
@@ -47,14 +36,14 @@ const SignUp = () => {
               fontWeight: "bold",
             }}
           >
-            Sign Up
+            Sign In
           </button>
         </form>
         <p>
-          <a href="/signupotp">SignUp with Mobile number? Sign Up</a>
+          <a href="/login">Login with Password? Login</a>
         </p>
         <p>
-          <a href="/login">Already have an account? Login</a>
+          <a href="/signup">Don't have an account? Create Account</a>
         </p>
         <p>Or Login with</p>
         <div className="social-login">
@@ -80,7 +69,7 @@ const SignUp = () => {
             />
           </a> */}
         </div>
-        <a href="#" className="skip">
+        <a href="/" className="skip">
           Skip
         </a>
       </div>
@@ -88,4 +77,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default LoginOtp;

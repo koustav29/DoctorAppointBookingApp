@@ -27,7 +27,7 @@ const Navbar = () => {
           <a href="listing">Services</a>
           <a href="labs">Labs</a>
           <a href="blog">Blogs</a>
-          <a href="contact">Contact</a>
+          {/* <a href="contact">Contact</a> */}
         </nav>
         <div className="profile" onClick={toggleProfileMenu}>
           <FaUserCircle size={28} />
@@ -35,7 +35,7 @@ const Navbar = () => {
             <div className="profile-dropdown">
               <a href="login">Login</a>
               <a href="signup">Sign Up</a>
-              <a href="edit-profile">Edit Profile</a>
+              <a href="userprofile">User Profile</a>
             </div>
           )}
         </div>

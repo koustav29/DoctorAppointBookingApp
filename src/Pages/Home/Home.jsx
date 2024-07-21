@@ -35,12 +35,12 @@ const Home = () => {
       <br></br>
       <br></br>
       <br></br>
-      <div className="card-slider">
+      {/* <div className="card-slider">
         <center>
           <h1>Labs based on your preference</h1>
         </center>
         <Slider />
-      </div>
+      </div> */}
       <br></br>
       <br></br>
       <br></br>

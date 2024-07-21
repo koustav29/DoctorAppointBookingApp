@@ -16,7 +16,7 @@ body {
   
   .search-bar {
     flex: 1;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     padding: 5px 10px;
     margin-right: 20px;
     border: 1px solid #ccc;
@@ -27,7 +27,7 @@ body {
   .nav-items a {
     margin: 0 10px;
     text-decoration: none;
-    color: #333;
+    color: #191919;
   }
   
   .nav-items a:hover {
@@ -45,7 +45,7 @@ body {
     position: absolute;
     top: 35px;
     right: 0;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
@@ -56,15 +56,15 @@ body {
     display: block;
     padding: 10px;
     text-decoration: none;
-    color: #333;
+    color: #191919;
   }
   
   .profile-dropdown a:hover {
-    background-color: #f0f0f0;
+    background-color: #ffffff;
   }
   .about-us {
       padding: 20px;
-      background-color: #fff;
+      background-color: #ffffff;
     }
     
     .about-us-heading {
@@ -102,7 +102,7 @@ body {
       flex: 2;
       padding-left: 20px;
       font-size: 18px;
-      color: #333;
+      color: #191919;
     }
     
     .about-us-text p {

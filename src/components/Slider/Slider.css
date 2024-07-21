@@ -15,7 +15,7 @@
   margin: 1 0px;
 }
 .slider-card {
-  /* border: 0px solid #fff; */
+  /* border: 0px solid #ffffff; */
   margin: 20px;
   border: 2px solid #ededed;
   box-shadow: 0px 10px 8px #727f7e;
@@ -23,20 +23,20 @@
   max-width: 70%;
   max-height: 60%;
   overflow: hidden;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
 }
 
 .card {
-  /* border: 0px solid #fff; */
+  /* border: 0px solid #ffffff; */
   margin: 20px;
   border: 2px solid #ededed;
   box-shadow: 0px 10px 8px #727f7e;
   cursor: pointer;
   max-width: 30%;
-  max-height: 60%;
+  max-height: 20%;
   overflow: hidden;
-  color: #fff;
+  color: #ffffff;
   cursor: pointer;
 }
 
@@ -80,7 +80,7 @@
 
   p {
     font-size: 12px;
-    color: black;
+    color: #191919;
     min-height: 40px;
 
     @media screen and (min-width: 1400px) {
