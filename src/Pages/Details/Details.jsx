@@ -35,7 +35,7 @@ function Details() {
           luctus lobortis enim leo. Iaculis lectus diam nisl nulla proin
           bibendum scelerisque.
         </p>
-        <div className="max-w-md mx-auto mt-10 p-8 border border-blue-500 rounded-md">
+        {/* <div className="max-w-md mx-auto mt-10 p-8 border border-blue-500 rounded-md">
           <form>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <input
@@ -72,7 +72,7 @@ function Details() {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
       </div>
     </>
   );
