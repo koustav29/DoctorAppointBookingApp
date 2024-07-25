@@ -4,10 +4,11 @@ import { FaUserCircle } from "react-icons/fa";
 import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom"; // If using React Router for navigation
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
-
+  const { isLoggedIn, currentUser } = useSelector((state) => state.user);
   const toggleProfileMenu = () => {
     setProfileMenuOpen(!profileMenuOpen);
   };
@@ -30,7 +31,11 @@ const Navbar = () => {
           {/* <a href="contact">Contact</a> */}
         </nav>
         <div className="profile" onClick={toggleProfileMenu}>
-          <FaUserCircle size={28} />
+          {isLoggedIn && currentUser?.avatar ? (
+            <img src={currentUser?.avatar} />
+          ) : (
+            <FaUserCircle size={28} />
+          )}
           {profileMenuOpen && (
             <div className="profile-dropdown">
               <a href="login">Login</a>

@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "./Slider.css";
 import dt from "../../db/data";
 
-function Sp() {
+function Sp({ data }) {
   const [defaultImage, setDefaultImage] = useState({});
   const settings = {
     dots: true,
@@ -48,30 +48,32 @@ function Sp() {
   return (
     <section className="homeSlider">
       <Slider {...settings}>
-        {dt.map((item, index) => (
-          <section className="slider-card" key={index}>
-            <div className="card-top">
-              <img src={item.imageUrls} height={10} />
-              <div className="lab-info-listing">
-                <span>
-                  {item.name}
-                  <br /> {item.type}
-                </span>
-              </div>
-            </div>
-            <div className="card-bottom">
-              <section className="location">
-                <div className="location-icon">
-                  <FontAwesomeIcon icon={faLocationArrow} />
+        {data && data.length
+          ? data.map((item, index) => (
+              <section className="slider-card" key={index}>
+                <div className="card-top">
+                  <img src={item.imageUrls} height={10} />
+                  <div className="lab-info-listing">
+                    <span>
+                      {item.name}
+                      <br /> {item.type}
+                    </span>
+                  </div>
                 </div>
-                <p>{item.address}</p>
+                <div className="card-bottom">
+                  <section className="location">
+                    <div className="location-icon">
+                      <FontAwesomeIcon icon={faLocationArrow} />
+                    </div>
+                    <p>{item.address}</p>
+                  </section>
+                  <a href="details">
+                    <button className="tests">View Tests and Packages</button>
+                  </a>
+                </div>
               </section>
-              <a href="details">
-                <button className="tests">View Tests and Packages</button>
-              </a>
-            </div>
-          </section>
-        ))}
+            ))
+          : null}
       </Slider>
     </section>
   );
