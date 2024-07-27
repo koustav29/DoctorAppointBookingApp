@@ -73,9 +73,9 @@ const Login = () => {
       <div className="auth-form">
         <h1>Log-in</h1>
         <p>Please login using account detail below.</p>
-        <form>
+        <form onSubmit={handleLogin}>
           <input
-            type="text"
+            type="email"
             style={{
               backgroundColor: "white",
               borderColor: "rgb(35, 187, 184)",
@@ -98,8 +98,7 @@ const Login = () => {
             onChange={handleChange}
             required
           />
-          <button
-            onClick={handleLogin}
+          <input
             type="submit"
             style={{
               backgroundColor: "rgb(35, 187, 184)",
@@ -107,9 +106,8 @@ const Login = () => {
               borderWidth: "2px",
               fontWeight: "bold",
             }}
-          >
-            Sign In
-          </button>
+            value="Sign In"
+          />
         </form>
         <p>
           <a href="/loginotp">Login with OTP? Login</a>

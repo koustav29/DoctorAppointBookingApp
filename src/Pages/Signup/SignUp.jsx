@@ -50,7 +50,7 @@ const SignUp = () => {
       <div className="auth-form">
         <h1>Signup</h1>
         <p>Please login using account detail below.</p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             style={{
@@ -64,7 +64,7 @@ const SignUp = () => {
             onChange={handleChange}
           />
           <input
-            type="text"
+            type="email"
             style={{
               backgroundColor: "white",
               borderColor: "rgb(35, 187, 184)",
@@ -81,19 +81,18 @@ const SignUp = () => {
             className="border p-3 rounded-lg"
             id="password"
             onChange={handleChange}
+            required
           />
-          <button
+          <input
             type="submit"
-            onClick={handleSubmit}
             style={{
               backgroundColor: "rgb(35, 187, 184)",
               borderColor: "skyblue",
               borderWidth: "2px",
               fontWeight: "bold",
             }}
-          >
-            Sign Up
-          </button>
+            value="Sign Up"
+          />
         </form>
         <p>
           <a href="/signupotp">SignUp with Mobile number? Sign Up</a>

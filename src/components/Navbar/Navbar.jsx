@@ -24,10 +24,10 @@ const Navbar = () => {
         </div>
         <nav className="nav-items">
           <a href="/">Home</a>
-          <a href="about">About Us</a>
-          <a href="listing">Services</a>
-          <a href="labs">Labs</a>
-          <a href="blog">Blogs</a>
+          <a href="/about">About Us</a>
+          <a href="/listing">Services</a>
+          <a href="/labs">Labs</a>
+          <a href="/blog">Blogs</a>
           {/* <a href="contact">Contact</a> */}
         </nav>
         <div className="profile" onClick={toggleProfileMenu}>
@@ -38,9 +38,9 @@ const Navbar = () => {
           )}
           {profileMenuOpen && (
             <div className="profile-dropdown">
-              <a href="login">Login</a>
-              <a href="signup">Sign Up</a>
-              <a href="userprofile">User Profile</a>
+              <a href="/login">Login</a>
+              <a href="/signup">Sign Up</a>
+              <a href="/userprofile">User Profile</a>
             </div>
           )}
         </div>
