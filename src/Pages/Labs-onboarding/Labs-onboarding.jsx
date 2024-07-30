@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Labs-onboarding.css";
 import { storage } from "../../../firebaseConfig";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -7,12 +7,18 @@ function LabsOnboarding() {
   const [labDetails, setLabDetails] = useState({
     labName: "",
     labAddress: "",
+    state: "",
+    city: "",
+    pin: "",
+    latlong: "",
     phoneNumber: "",
     email: "",
     website: "",
     operatingDays: [],
     availableTimeSlots: [],
     labImages: null,
+    openingTime: "HH:MM AM",
+    closingTime: "HH:MM AM",
   });
 
   const [days, setDays] = useState({
@@ -121,6 +127,34 @@ function LabsOnboarding() {
       .catch((error) => {
         console.error("Error:", error);
       });
+
+    // try {
+    //   if (formData.imageUrls.length < 1)
+    //     return setError('You must upload at least one image');
+    //   if (+formData.regularPrice < +formData.discountPrice)
+    //     return setError('Discount price must be lower than regular price');
+    //   setLoading(true);
+    //   setError(false);
+    //   const res = await fetch('/api/listing/create', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       ...formData,
+    //       userRef: currentUser._id,
+    //     }),
+    //   });
+    //   const data = await res.json();
+    //   setLoading(false);
+    //   if (data.success === false) {
+    //     setError(data.message);
+    //   }
+    //   navigate(`/listing/${data._id}`);
+    // } catch (error) {
+    //   setError(error.message);
+    //   setLoading(false);
+    // }
   };
 
   return (
@@ -140,13 +174,15 @@ function LabsOnboarding() {
               />
             </div>
             <div className="column">
-              <label>Lab Address</label>
+              <label>Website</label>
               <input
                 type="text"
-                name="labAddress"
-                value={labDetails.labAddress}
-                onChange={handleInputChange}
-                placeholder="Enter Lab Address"
+                name="website"
+                value={labDetails.website}
+                onChange={(e) =>
+                  handleInputChange(e, setLabDetails, labDetails)
+                }
+                placeholder="Enter Website URL"
               />
             </div>
           </div>
@@ -174,27 +210,85 @@ function LabsOnboarding() {
           </div>
           <div className="form-row">
             <div className="column">
-              <label>Website</label>
+              <label>Lab Address</label>
               <input
                 type="text"
-                name="website"
-                value={labDetails.website}
-                onChange={handleInputChange}
-                placeholder="Enter Website URL"
+                name="labAddress"
+                value={labDetails.labAddress}
+                onChange={(e) =>
+                  handleInputChange(e, setLabDetails, labDetails)
+                }
+                placeholder="Enter Lab Address"
               />
             </div>
             <div className="column">
-              <label>Operating Days</label>
-              <div className="date-container">
-                {Object.keys(days).map((day) => (
-                  <div
-                    key={day}
-                    className={`days ${days[day] ? "active" : ""}`}
-                    onClick={() => handleClickForDayChange(day)}
-                  >
-                    {day}
-                  </div>
-                ))}
+              <label>State</label>
+              <input
+                type="text"
+                name="state"
+                value={labDetails.state}
+                onChange={(e) =>
+                  handleInputChange(e, setLabDetails, labDetails)
+                }
+                placeholder="Select state"
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="column">
+              <label>City</label>
+              <input
+                type="text"
+                name="city"
+                value={labDetails.city}
+                onChange={(e) =>
+                  handleInputChange(e, setLabDetails, labDetails)
+                }
+                placeholder="Enter City"
+              />
+            </div>
+            <div className="column">
+              <label>Pin Code</label>
+              <input
+                type="text"
+                name="pin"
+                value={labDetails.pin}
+                onChange={(e) =>
+                  handleInputChange(e, setLabDetails, labDetails)
+                }
+                placeholder="Enter Pin Code"
+              />
+            </div>
+            <div className="column">
+              <label>Lat/Long</label>
+              <input
+                type="text"
+                name="latlong"
+                value={labDetails.latlong}
+                onChange={(e) =>
+                  handleInputChange(e, setLabDetails, labDetails)
+                }
+                placeholder="Enter Lab Lat/Long"
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="column">
+              <label>Opening Time</label>
+              <div className="time-slots-container">
+                <TimePickerDropdown
+                  keyName="openingTime"
+                  setLabDetails={setLabDetails}
+                />
+              </div>
+            </div>
+            <div className="column">
+              <label>Closing Time</label>
+              <div className="time-slots-container">
+                <TimePickerDropdown
+                  keyName="closingTime"
+                  setLabDetails={setLabDetails}
+                />
               </div>
             </div>
           </div>
@@ -215,15 +309,15 @@ function LabsOnboarding() {
               )}
             </div>
             <div className="column">
-              <label>Available Time Slots</label>
-              <div className="time-slots-container">
-                {Object.keys(timeSlots).map((slot) => (
+              <label>Operating Days</label>
+              <div className="date-container">
+                {Object.keys(days).map((day) => (
                   <div
-                    key={slot}
-                    className={`timeSlots ${timeSlots[slot] ? "active" : ""}`}
-                    onClick={() => handleClickForTimeChange(slot)}
+                    key={day}
+                    className={`days ${days[day] ? "active" : ""}`}
+                    onClick={() => handleClickForDayChange(day)}
                   >
-                    {slot}
+                    {day}
                   </div>
                 ))}
               </div>
@@ -239,4 +333,87 @@ function LabsOnboarding() {
     </div>
   );
 }
+
+const TimePickerDropdown = (keyName, setLabDetails) => {
+  const [hour, setHour] = useState("12");
+  const [minute, setMinute] = useState("00");
+  const [timePeriod, setTimePeriod] = useState("AM");
+  const [totalTime, setTotalTime] = useState("HH:MM XX");
+  const handleHourChange = (event) => {
+    setHour(event.target.value);
+    let time = totalTime.split(":")[0];
+    time = totalTime.replace(time, event.target.value);
+    setTotalTime(time);
+    console.log("time - ", time);
+    //setLabDetails()
+  };
+
+  const handleMinuteChange = (event) => {
+    setMinute(event.target.value);
+
+    let time = totalTime.split(":")[1]?.split(" ")[0];
+    time = totalTime.replace(time, event.target.value);
+    setTotalTime(time);
+
+    console.log("time - ", time);
+  };
+
+  const handleTimePeriodChange = (event) => {
+    setTimePeriod(event.target.value);
+
+    let time = totalTime.split(" ")[1];
+    time = totalTime.replace(time, event.target.value);
+    setTotalTime(time);
+
+    console.log("time - ", time);
+  };
+
+  const renderOptions = (start, end) => {
+    const options = [];
+    for (let i = start; i <= end; i++) {
+      const value = i.toString().padStart(2, "0");
+      options.push(
+        <option key={value} value={value}>
+          {value}
+        </option>
+      );
+    }
+    return options;
+  };
+
+  return (
+    <div className="labTime">
+      <label htmlFor="hour-select">Hour: </label>
+      <select
+        id="hour-select"
+        value={hour}
+        onChange={handleHourChange}
+        name="HH"
+      >
+        {renderOptions(1, 12)}
+      </select>
+
+      <label htmlFor="minute-select">Minute: </label>
+      <select
+        id="minute-select"
+        value={minute}
+        onChange={handleMinuteChange}
+        name="MM"
+      >
+        {renderOptions(0, 59)}
+      </select>
+      <label htmlFor="am-pm-select">AM/PM: </label>
+      <select
+        id="am-pm-select"
+        value={timePeriod}
+        onChange={handleTimePeriodChange}
+        name="XX"
+      >
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+      </select>
+    </div>
+  );
+};
+
 export default LabsOnboarding;

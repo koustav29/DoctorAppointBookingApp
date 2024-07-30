@@ -264,6 +264,7 @@ input[type="text"] {
 .test-price {
   font-weight: bold;
 }
+
 .test-card {
   position: relative;
 }
@@ -283,6 +284,7 @@ input[type="text"] {
 .delete-button:hover {
   color: #cc0000;
 }
+
 .MakeBooking {
   margin: 0 auto;
   padding: 20px;
@@ -377,7 +379,7 @@ input[type="email"] {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
 }
 
 .days span,
@@ -397,6 +399,7 @@ input[type="email"] {
   padding: 15px;
   border-radius: 4px;
 }
+
 /* .primary-button {
   display: block;
   width: 100%;

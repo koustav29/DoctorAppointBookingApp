@@ -4,12 +4,12 @@ import Sidebar from "./Sidebar.jsx";
 
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = useState({
-    bookingToday: 0,
-    patientIn: 0,
-    patientRel: 0,
-    relievedToday: 0,
-    reportsToDeliver: 0,
-    reportsDelivered: 0,
+    bookingToday: 10,
+    patientIn: 10,
+    patientRel: 10,
+    relievedToday: 10,
+    reportsToDeliver: 10,
+    reportsDelivered: 10,
     appointments: [],
     labDetails: {},
   });
