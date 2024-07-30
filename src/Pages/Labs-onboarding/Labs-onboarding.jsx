@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Labs-onboarding.css";
+import { storage } from "../../../firebaseConfig";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function LabsOnboarding() {
   const [labDetails, setLabDetails] = useState({
@@ -36,46 +38,42 @@ function LabsOnboarding() {
     "6PM - 7PM": false,
   });
 
-  const [tests, setTests] = useState([
-    { name: "Blood Test", description: "Complete blood count", price: "1300" },
-    { name: "Urine Analysis", description: "Urinalysis test", price: "500" },
-    { name: "X-Ray", description: "Chest X-ray", price: "1100" },
-  ]);
+  const [imageUrl, setImageUrl] = useState(null);
 
-  const [newTest, setNewTest] = useState({
-    name: "",
-    description: "",
-    sampleName: "",
-    sampleType: "",
-    vialName: "",
-    preparationTime: "",
-    price: "",
-    sampleCollection: [],
-    availability: [],
-    features: [],
-    availableTimeSlots: [],
-  });
-
-  const handleInputChange = (e, setState, state) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setState({
-      ...state,
+    setLabDetails({
+      ...labDetails,
       [name]: value,
     });
   };
 
-  const handleCheckboxChange = (e, setState, state) => {
-    const { name, value, checked } = e.target;
-    setState((prevDetails) => {
-      const newValues = checked
-        ? [...prevDetails[name], value]
-        : prevDetails[name].filter((val) => val !== value);
-      return { ...prevDetails, [name]: newValues };
-    });
-  };
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
 
-  const handleFileChange = (e) => {
-    setLabDetails({ ...labDetails, labImages: e.target.files[0] });
+    if (file.size > 1024 * 1024) {
+      alert("File size exceeds 1MB limit");
+      return;
+    }
+
+    setLabDetails({ ...labDetails, labImages: file });
+
+    try {
+      const storageRef = ref(storage, `lab-images/${file.name}`);
+      const snapshot = await uploadBytes(storageRef, file);
+      const url = await getDownloadURL(snapshot.ref);
+
+      setImageUrl(url);
+      setLabDetails((prevDetails) => ({
+        ...prevDetails,
+        labImages: url,
+      }));
+
+      console.log("File uploaded successfully");
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
   };
 
   const handleClickForDayChange = (day) => {
@@ -92,25 +90,6 @@ function LabsOnboarding() {
     });
   };
 
-  const addTest = () => {
-    setTests([...tests, newTest]);
-    setNewTest({
-      name: "",
-      description: "",
-      sampleName: "",
-      sampleType: "",
-      vialName: "",
-      preparationTime: "",
-      price: "",
-      sampleCollection: [],
-      availability: [],
-      features: [],
-      availableTimeSlots: [],
-    });
-  };
-  const deleteTest = (index) => {
-    setTests(tests.filter((_, i) => i !== index));
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -121,15 +100,14 @@ function LabsOnboarding() {
         availableTimeSlots: Object.keys(timeSlots).filter(
           (slot) => timeSlots[slot]
         ),
-        labImages: labDetails.labImages ? labDetails.labImages.name : null,
+        labImages: imageUrl,
       },
-      tests,
     };
 
     console.log("Payload:", payload);
 
     // Replace with your POST request logic
-    fetch("https://your-api-endpoint.com/save-details", {
+    fetch("https://your-api-endpoint.com/save-lab-details", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -149,7 +127,7 @@ function LabsOnboarding() {
     <div className="LabsOnboarding">
       <section className="lab-information">
         <h2>Lab Information</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="column">
               <label>Lab Name</label>
@@ -157,9 +135,7 @@ function LabsOnboarding() {
                 type="text"
                 name="labName"
                 value={labDetails.labName}
-                onChange={(e) =>
-                  handleInputChange(e, setLabDetails, labDetails)
-                }
+                onChange={handleInputChange}
                 placeholder="Enter Lab Name"
               />
             </div>
@@ -169,9 +145,7 @@ function LabsOnboarding() {
                 type="text"
                 name="labAddress"
                 value={labDetails.labAddress}
-                onChange={(e) =>
-                  handleInputChange(e, setLabDetails, labDetails)
-                }
+                onChange={handleInputChange}
                 placeholder="Enter Lab Address"
               />
             </div>
@@ -183,9 +157,7 @@ function LabsOnboarding() {
                 type="text"
                 name="phoneNumber"
                 value={labDetails.phoneNumber}
-                onChange={(e) =>
-                  handleInputChange(e, setLabDetails, labDetails)
-                }
+                onChange={handleInputChange}
                 placeholder="Enter Phone Number"
               />
             </div>
@@ -195,9 +167,7 @@ function LabsOnboarding() {
                 type="email"
                 name="email"
                 value={labDetails.email}
-                onChange={(e) =>
-                  handleInputChange(e, setLabDetails, labDetails)
-                }
+                onChange={handleInputChange}
                 placeholder="Enter Email"
               />
             </div>
@@ -209,308 +179,64 @@ function LabsOnboarding() {
                 type="text"
                 name="website"
                 value={labDetails.website}
-                onChange={(e) =>
-                  handleInputChange(e, setLabDetails, labDetails)
-                }
+                onChange={handleInputChange}
                 placeholder="Enter Website URL"
               />
             </div>
             <div className="column">
               <label>Operating Days</label>
               <div className="date-container">
-                {Object.keys(days).map((day) => {
-                  return (
-                    <div
-                      type="checkbox"
-                      key={day}
-                      className={
-                        "days " +
-                        (days[day].toString() === "true" ? "active" : "")
-                      }
-                      onClick={() => handleClickForDayChange(day)}
-                    >
-                      {day}
-                    </div>
-                  );
-                })}
+                {Object.keys(days).map((day) => (
+                  <div
+                    key={day}
+                    className={`days ${days[day] ? "active" : ""}`}
+                    onClick={() => handleClickForDayChange(day)}
+                  >
+                    {day}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
           <div className="form-row">
             <div className="column">
               <label>Upload Lab Images</label>
-              <input type="file" onChange={handleFileChange} />
+              <input type="file" onChange={handleFileChange} accept="image/*" />
               <p>Maximum file size: 1MB</p>
+              {imageUrl && (
+                <div>
+                  <p>Image uploaded successfully!</p>
+                  <img
+                    src={imageUrl}
+                    alt="Uploaded lab image"
+                    style={{ width: "200px" }}
+                  />
+                </div>
+              )}
             </div>
             <div className="column">
               <label>Available Time Slots</label>
               <div className="time-slots-container">
-                {Object.keys(timeSlots).map((slot) => {
-                  return (
-                    <div
-                      type="checkbox"
-                      key={slot}
-                      className={
-                        "timeSlots " +
-                        (timeSlots[slot].toString() === "true" ? "active" : "")
-                      }
-                      onClick={() => handleClickForTimeChange(slot)}
-                    >
-                      {slot}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </form>
-      </section>
-
-      <section className="tests-offered">
-        <h2>Tests Offered</h2>
-        <form>
-          <div className="form-row">
-            <div className="column">
-              <label>Test Name</label>
-              <input
-                type="text"
-                name="name"
-                value={newTest.name}
-                onChange={(e) => handleInputChange(e, setNewTest, newTest)}
-                placeholder="Enter Test Name"
-              />
-            </div>
-            <div className="column">
-              <label>Test Description</label>
-              <input
-                type="text"
-                name="description"
-                value={newTest.description}
-                onChange={(e) => handleInputChange(e, setNewTest, newTest)}
-                placeholder="Enter Test Description"
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="column">
-              <label>Sample Name</label>
-              <input
-                type="text"
-                name="sampleName"
-                value={newTest.sampleName}
-                onChange={(e) => handleInputChange(e, setNewTest, newTest)}
-                placeholder="Enter Sample Name"
-              />
-            </div>
-            <div className="column">
-              <label>Sample Type</label>
-              <input
-                type="text"
-                name="sampleType"
-                value={newTest.sampleType}
-                onChange={(e) => handleInputChange(e, setNewTest, newTest)}
-                placeholder="Choose Sample Type"
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="column">
-              <label>Vial Name</label>
-              <input
-                type="text"
-                name="vialName"
-                value={newTest.vialName}
-                onChange={(e) => handleInputChange(e, setNewTest, newTest)}
-                placeholder="Enter Vial Name"
-              />
-            </div>
-            <div className="column">
-              <label>Preparation Time</label>
-              <input
-                type="text"
-                name="preparationTime"
-                value={newTest.preparationTime}
-                onChange={(e) => handleInputChange(e, setNewTest, newTest)}
-                placeholder="Enter Preparation Time"
-              />
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="column">
-              <label>Pricing</label>
-              <input
-                type="text"
-                name="price"
-                value={newTest.price}
-                onChange={(e) => handleInputChange(e, setNewTest, newTest)}
-                placeholder="Enter Test Price"
-              />
-            </div>
-            <div className="column">
-              <label>Sample Collection</label>
-              <div className="sample-collection-container">
-                {["Home", "At Lab"].map((sample) => {
-                  return (
-                    <div
-                      key={sample}
-                      className={
-                        "sampleCollection " +
-                        (newTest.sampleCollection.includes(sample)
-                          ? "active"
-                          : "")
-                      }
-                      onClick={() =>
-                        handleCheckboxChange(
-                          {
-                            target: {
-                              name: "sampleCollection",
-                              value: sample,
-                              checked:
-                                !newTest.sampleCollection.includes(sample),
-                            },
-                          },
-                          setNewTest,
-                          newTest
-                        )
-                      }
-                    >
-                      {sample}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="column">
-              <label>Availability</label>
-              <div className="date-container">
-                {Object.keys(days).map((day) => {
-                  return (
-                    <div
-                      key={day}
-                      className={
-                        "daysAvailability " +
-                        (newTest.availability.includes(day) ? "active" : "")
-                      }
-                      onClick={() =>
-                        handleCheckboxChange(
-                          {
-                            target: {
-                              name: "availability",
-                              value: day,
-                              checked: !newTest.availability.includes(day),
-                            },
-                          },
-                          setNewTest,
-                          newTest
-                        )
-                      }
-                    >
-                      {day}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className="column">
-              <label>Additional features</label>
-              <div className="additional-features-container">
-                {["Express Service", "Online Reports"].map((feature) => {
-                  return (
-                    <div
-                      key={feature}
-                      className={
-                        "features " +
-                        (newTest.features.includes(feature) ? "active" : "")
-                      }
-                      onClick={() =>
-                        handleCheckboxChange(
-                          {
-                            target: {
-                              name: "features",
-                              value: feature,
-                              checked: !newTest.features.includes(feature),
-                            },
-                          },
-                          setNewTest,
-                          newTest
-                        )
-                      }
-                    >
-                      {feature}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-          <div className="form-row">
-            <div className="column">
-              <label>Available Time Slots</label>
-              <div className="time-slots-container">
-                {Object.keys(timeSlots).map((slot) => {
-                  return (
-                    <div
-                      key={slot}
-                      className={
-                        "timeSlots " +
-                        (newTest.availableTimeSlots.includes(slot)
-                          ? "active"
-                          : "")
-                      }
-                      onClick={() =>
-                        handleCheckboxChange(
-                          {
-                            target: {
-                              name: "availableTimeSlots",
-                              value: slot,
-                              checked:
-                                !newTest.availableTimeSlots.includes(slot),
-                            },
-                          },
-                          setNewTest,
-                          newTest
-                        )
-                      }
-                    >
-                      {slot}
-                    </div>
-                  );
-                })}
+                {Object.keys(timeSlots).map((slot) => (
+                  <div
+                    key={slot}
+                    className={`timeSlots ${timeSlots[slot] ? "active" : ""}`}
+                    onClick={() => handleClickForTimeChange(slot)}
+                  >
+                    {slot}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
           <center>
-            <button type="button" className="submit-button" onClick={addTest}>
-              Add Test
+            <button type="submit" className="submit-button">
+              Save Details
             </button>
           </center>
         </form>
       </section>
-
-      <section className="saved-tests">
-        <h2>Saved Tests</h2>
-        <div className="test-cards">
-          {tests.map((test, index) => (
-            <div className="test-card" key={index}>
-              <div className="delete-button" onClick={() => deleteTest(index)}>
-                &#10005;
-              </div>
-              <h3>{test.name}</h3>
-              <p>{test.description}</p>
-              <p>{test.price}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      <center>
-        <button type="submit" className="submit-button" onClick={handleSubmit}>
-          Save Details
-        </button>
-      </center>
     </div>
   );
 }
-
 export default LabsOnboarding;

@@ -71,7 +71,7 @@ const SignUp = () => {
               borderWidth: "2px",
             }}
             id="email"
-            placeholder="Mobile Number / Email Address"
+            placeholder="Email Address"
             required
             onChange={handleChange}
           />

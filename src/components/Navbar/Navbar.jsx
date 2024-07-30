@@ -38,9 +38,14 @@ const Navbar = () => {
           )}
           {profileMenuOpen && (
             <div className="profile-dropdown">
-              <a href="/login">Login</a>
-              <a href="/signup">Sign Up</a>
-              <a href="/userprofile">User Profile</a>
+              {!isLoggedIn ? (
+                <>
+                  <a href="login">Login</a>
+                  <a href="signup">Sign Up</a>
+                </>
+              ) : (
+                <a href="userprofile">User Profile</a>
+              )}
             </div>
           )}
         </div>

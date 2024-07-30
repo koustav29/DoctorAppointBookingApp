@@ -11,7 +11,7 @@ function Card() {
   return (
     <>
       {dt.map((item, index) => (
-        <Link to={`/details/${item._id}`}>
+        <Link id="RouterNavLink" to={`/details/${item._id}`}>
           <section className="card" key={index}>
             <div className="card-top">
               <img src={item.imageUrls} height={10} />

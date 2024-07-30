@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./Details.css"; // Assume styles are defined here for simplicity
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import Slider from "../../components/Slider/Slider";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
@@ -120,6 +121,12 @@ function Details() {
           </form>
         </div> */}
           </div>
+          {/* <div className="card-slider">
+            <center>
+              <h1>Other Listed Lab</h1>
+            </center>
+            <Slider data={listingData} />
+          </div> */}
         </div>
       )}
     </>
