@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa"; // react-icons library required
 import OtpValidation from "../../components/OtpValidation/OtpValidation";
-import "./home.css";
+import "./Home.css";
 import { Link } from "react-router-dom";
 import Slider from "../../components/Slider/Slider";
 import { FaSearch } from "react-icons/fa";
