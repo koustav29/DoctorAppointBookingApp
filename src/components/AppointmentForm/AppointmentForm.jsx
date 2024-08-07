@@ -53,7 +53,7 @@ const AppointmentForm = () => {
         <div className="input-group">
           <label>
             <FaMapMarkerAlt className="icon" />
-            <input type="text" placeholder="Address, Area, City" />
+            <input type="text" placeholder="Select City" />
           </label>
         </div>
         <div className="input-group">
