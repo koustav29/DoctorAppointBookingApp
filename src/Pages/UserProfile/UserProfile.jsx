@@ -3,6 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./UserProfile.css";
+import {
+  deleteUserFailure,
+  deleteUserSuccess,
+  signOutUserStart,
+} from "../../redux/user/userSlice";
 
 const UserProfile = () => {
   const [editMode, setEditMode] = useState(false);
@@ -122,6 +127,7 @@ const UserProfile = () => {
   const fetchUserData = async () => {
     try {
       const response = await axios.get(`/api/user/${currentUser._id}`);
+      console.log("user - > ", response, response.data);
       setUserData(response.data);
       setFormData({
         username: response.data.username,
@@ -196,14 +202,37 @@ const UserProfile = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.get("/api/auth/signout");
-      dispatch({ type: "LOGOUT" });
+      dispatch(signOutUserStart());
+      const res = await fetch("/api/auth/signout");
+      const data = await res.json();
+      console.log("data - signput ", data);
+      if (data.success === false) {
+        dispatch(deleteUserFailure(data?.message));
+        return;
+      }
+      dispatch(deleteUserSuccess(data));
       navigate("/login");
     } catch (error) {
-      console.error("Error logging out:", error);
+      dispatch(deleteUserFailure(data?.message));
     }
+    // try {
+    //   await axios.get("/api/auth/signout");
+    //   dispatch({ type: "LOGOUT" });
+    //   // navigate("/login");
+    // } catch (error) {
+    //   console.error("Error logging out:", error);
+    // }
   };
 
+  console.log(
+    "----- ",
+    !userData,
+    !healthStats,
+    !latestHealthReport,
+    !monthlyStats,
+    !latestTestReport,
+    !assignment
+  );
   if (
     !userData ||
     !healthStats ||
@@ -212,7 +241,7 @@ const UserProfile = () => {
     !latestTestReport ||
     !assignment
   ) {
-    return <div>Loading...</div>;
+    // return <div>Loading...</div>;
   }
 
   const renderContent = () => {
@@ -230,16 +259,16 @@ const UserProfile = () => {
 
             <div className="health-center-details">
               <h3>Health Center Details</h3>
-              <p>Pincode: {userData.healthCenter.pincode}</p>
-              <p>District: {userData.healthCenter.district}</p>
-              <p>State: {userData.healthCenter.state}</p>
-              <p>Address: {userData.healthCenter.address}</p>
+              <p>Pincode: {userData.healthCenter?.pincode}</p>
+              <p>District: {userData.healthCenter?.district}</p>
+              <p>State: {userData.healthCenter?.state}</p>
+              <p>Address: {userData.healthCenter?.address}</p>
             </div>
 
             <div className="center-contact">
               <h3>Center Contact</h3>
-              <p>Phone: {userData.healthCenter.phone}</p>
-              <p>Email: {userData.healthCenter.email}</p>
+              <p>Phone: {userData.healthCenter?.phone}</p>
+              <p>Email: {userData.healthCenter?.email}</p>
             </div>
 
             <div className="health-reports">
@@ -346,7 +375,7 @@ const UserProfile = () => {
   };
   return (
     <div className="user-profile">
-      <header>
+      <header style={{ marginTop: "50px" }}>
         <button className="back-button" onClick={() => navigate(-1)}>
           ←
         </button>
