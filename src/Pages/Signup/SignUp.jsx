@@ -87,7 +87,11 @@ const SignUp = () => {
             onChange={handleChange}
             required
           />
-          <input type="checkbox" id="role" onChange={handleChange} />
+          <div className="role">
+            <input type="checkbox" id="role" onChange={handleChange} />
+            <p>SignUp as Lab Owner</p>
+          </div>
+
           <input
             type="submit"
             style={{
@@ -99,9 +103,9 @@ const SignUp = () => {
             value="Sign Up"
           />
         </form>
-        <p>
+        {/* <p>
           <a href="/signupotp">SignUp with Mobile number? Sign Up</a>
-        </p>
+        </p> */}
         <p>
           <a href="/login">Already have an account? Login</a>
         </p>

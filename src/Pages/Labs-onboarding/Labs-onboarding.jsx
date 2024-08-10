@@ -7,20 +7,18 @@ function LabsOnboarding() {
   const [labDetails, setLabDetails] = useState({
     labName: "",
     labAddress: "",
-    state: "",
-    city: "",
-    pin: "",
-    latlong: "",
-    phoneNumber: "",
-    email: "",
-    website: "",
-    operatingDays: [],
-    availableTimeSlots: [],
-    labImages: null,
-    openingTime: "HH:MM AM",
-    closingTime: "HH:MM AM",
+    labState: "",
+    labCity: "",
+    labPin: "",
+    labLatLong: "",
+    labPhoneNumber: "",
+    labEmail: "",
+    labWebsite: "",
+    labOperatingDays: [],
+    labImageUrls: [],
+    labOpeningTime: "HH:MM AM",
+    labClosingTime: "HH:MM AM",
   });
-
   const [days, setDays] = useState({
     Monday: false,
     Tuesday: false,
@@ -63,7 +61,7 @@ function LabsOnboarding() {
       return;
     }
 
-    setLabDetails({ ...labDetails, labImages: file });
+    setLabDetails({ ...labDetails, labImageUrls: file });
 
     try {
       const storageRef = ref(storage, `lab-images/${file.name}`);
@@ -73,7 +71,7 @@ function LabsOnboarding() {
       setImageUrl(url);
       setLabDetails((prevDetails) => ({
         ...prevDetails,
-        labImages: url,
+        labImageUrls: url,
       }));
 
       console.log("File uploaded successfully");
@@ -102,11 +100,11 @@ function LabsOnboarding() {
     const payload = {
       labDetails: {
         ...labDetails,
-        operatingDays: Object.keys(days).filter((day) => days[day]),
+        labOperatingDays: Object.keys(days).filter((day) => days[day]),
         availableTimeSlots: Object.keys(timeSlots).filter(
           (slot) => timeSlots[slot]
         ),
-        labImages: imageUrl,
+        labImageUrls: imageUrl,
       },
     };
 
@@ -171,14 +169,15 @@ function LabsOnboarding() {
                 value={labDetails.labName}
                 onChange={handleInputChange}
                 placeholder="Enter Lab Name"
+                required
               />
             </div>
             <div className="column">
               <label>Website</label>
               <input
                 type="text"
-                name="website"
-                value={labDetails.website}
+                name="labWebsite"
+                value={labDetails.labWebsite}
                 onChange={(e) =>
                   handleInputChange(e, setLabDetails, labDetails)
                 }
@@ -190,21 +189,23 @@ function LabsOnboarding() {
             <div className="column">
               <label>Phone Number</label>
               <input
-                type="text"
-                name="phoneNumber"
-                value={labDetails.phoneNumber}
+                type="number"
+                name="labPhoneNumber"
+                value={labDetails.labPhoneNumber}
                 onChange={handleInputChange}
                 placeholder="Enter Phone Number"
+                required
               />
             </div>
             <div className="column">
               <label>Email</label>
               <input
                 type="email"
-                name="email"
-                value={labDetails.email}
+                name="labEmail"
+                value={labDetails.labEmail}
                 onChange={handleInputChange}
                 placeholder="Enter Email"
+                required
               />
             </div>
           </div>
@@ -219,18 +220,19 @@ function LabsOnboarding() {
                   handleInputChange(e, setLabDetails, labDetails)
                 }
                 placeholder="Enter Lab Address"
+                required
               />
             </div>
             <div className="column">
               <label>State</label>
               <input
                 type="text"
-                name="state"
-                value={labDetails.state}
+                name="labState"
+                value={labDetails.labState}
                 onChange={(e) =>
                   handleInputChange(e, setLabDetails, labDetails)
                 }
-                placeholder="Select state"
+                placeholder="Enter State"
               />
             </div>
           </div>
@@ -239,8 +241,8 @@ function LabsOnboarding() {
               <label>City</label>
               <input
                 type="text"
-                name="city"
-                value={labDetails.city}
+                name="labCity"
+                value={labDetails.labCity}
                 onChange={(e) =>
                   handleInputChange(e, setLabDetails, labDetails)
                 }
@@ -250,9 +252,9 @@ function LabsOnboarding() {
             <div className="column">
               <label>Pin Code</label>
               <input
-                type="text"
-                name="pin"
-                value={labDetails.pin}
+                type="number"
+                name="labPin"
+                value={labDetails.labPin}
                 onChange={(e) =>
                   handleInputChange(e, setLabDetails, labDetails)
                 }
@@ -263,8 +265,8 @@ function LabsOnboarding() {
               <label>Lat/Long</label>
               <input
                 type="text"
-                name="latlong"
-                value={labDetails.latlong}
+                name="labLatLong"
+                value={labDetails.labLatLong}
                 onChange={(e) =>
                   handleInputChange(e, setLabDetails, labDetails)
                 }
@@ -277,7 +279,7 @@ function LabsOnboarding() {
               <label>Opening Time</label>
               <div className="time-slots-container">
                 <TimePickerDropdown
-                  keyName="openingTime"
+                  keyName="labOpeningTime"
                   setLabDetails={setLabDetails}
                 />
               </div>
@@ -286,7 +288,7 @@ function LabsOnboarding() {
               <label>Closing Time</label>
               <div className="time-slots-container">
                 <TimePickerDropdown
-                  keyName="closingTime"
+                  keyName="labClosingTime"
                   setLabDetails={setLabDetails}
                 />
               </div>

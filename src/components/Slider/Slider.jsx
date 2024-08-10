@@ -51,8 +51,8 @@ function Sp({ data }) {
       <Slider {...settings}>
         {data && data.length
           ? data.map((item, index) => (
-              <Link to={`/details/${item._id}`}>
-                <section className="slider-card" key={index}>
+              <Link to={`/details/${item._id}`} key={index}>
+                <section className="slider-card">
                   <div className="card-top">
                     <img src={item.imageUrls} height={10} />
                     <div className="lab-info-listing">

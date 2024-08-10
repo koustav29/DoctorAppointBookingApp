@@ -9,10 +9,10 @@ import LoginOtp from "./Pages/Login/LoginOtp";
 import Listing from "./Pages/Listing/Listing";
 import About from "./Pages/About/About";
 import Details from "./Pages/Details/Details";
-import Dashboard from "./Pages/Lab-dashboard/Lab-dashboard";
+import LabDashboard from "./Pages/Lab-dashboard/Lab-dashboard";
 import Bookings from "./Pages/Lab-dashboard/Bookings";
 import OtpValidation from "./components/OtpValidation/OtpValidation";
-import Labs from "./Pages/Labs-onboarding/Labs-onboarding";
+import LabsOnboarding from "./Pages/Labs-onboarding/Labs-onboarding";
 import Blog from "./Pages/Blog/Blog";
 import MakeBooking from "./Pages/MakeBooking/MakeBooking";
 import TestOffered from "./Pages/Lab-dashboard/Test-offered/TestOffered";
@@ -30,11 +30,12 @@ function App() {
         <Route path="/loginotp" element={<LoginOtp />} />
         <Route path="/otp" element={<OtpValidation />} />
         <Route path="/userprofile" element={<UserProfile />} />
-        <Route path="/labs" element={<Labs />} />
+        <Route path="/labs-onboarding" element={<LabsOnboarding />} />
+        <Route path="/lab-dashboard" element={<LabDashboard />} />
         <Route path="/listing" element={<Listing />} />
         <Route path="/about" element={<About />} />
         <Route path="/details/:listingId" element={<Details />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+
         <Route path="/bookings" element={<Bookings />} />
         <Route path="/test" element={<TestOffered />} />
         <Route path="/blog" element={<Blog />} />

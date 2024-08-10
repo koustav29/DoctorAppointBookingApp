@@ -33,13 +33,16 @@ export default function OAuth() {
     }
   };
   return (
-    <button
+    <input
+      value="Sign in with Google"
+      name="google"
+      id="google"
       onClick={handleGoogleClick}
+      placeholder="Sign in with Google"
       type="button"
-      style={{ color: "black" }}
-      className="bg-red-700 text-white p-3 rounded-lg uppercase hover:opacity-95"
-    >
-      Continue with google
-    </button>
+      style={{ width: "30px", height: "30px" }}
+      src="https://img.icons8.com/color/48/000000/google-logo.png"
+      className="googleLogin"
+    />
   );
 }

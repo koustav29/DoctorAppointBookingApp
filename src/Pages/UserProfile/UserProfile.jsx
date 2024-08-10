@@ -16,14 +16,14 @@ const UserProfile = () => {
   const [activeTab, setActiveTab] = useState("general");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  //const [userData, setUserData] = useState(null);
+  //const [data, setUserData] = useState(null);
   //const [healthStats, setHealthStats] = useState(null);
   const [latestHealthReport, setLatestHealthReport] = useState(null);
   const [monthlyStats, setMonthlyStats] = useState(null);
   const [latestTestReport, setLatestTestReport] = useState(null);
   const [assignment, setAssignment] = useState(null);
 
-  const [userData, setUserData] = useState({
+  const [data, setUserData] = useState({
     username: "Roy Anderhat",
     email: "roy.anderhat@example.com",
     avatar: "https://via.placeholder.com/150",
@@ -112,14 +112,14 @@ const UserProfile = () => {
   }, []);
 
   // useEffect(() => {
-  //   if (userData) {
+  //   if (data) {
   //     setFormData({
-  //       username: userData.username,
-  //       email: userData.email,
-  //       avatar: userData.avatar,
+  //       username: data.username,
+  //       email: data.email,
+  //       avatar: data.avatar,
   //     });
   //   }
-  // }, [userData]);
+  // }, [data]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -128,7 +128,7 @@ const UserProfile = () => {
     try {
       const response = await axios.get(`/api/user/${currentUser._id}`);
       console.log("user - > ", response, response.data);
-      setUserData(response.data);
+      // setUserData(response.data);
       setFormData({
         username: response.data.username,
         email: response.data.email,
@@ -211,6 +211,7 @@ const UserProfile = () => {
         return;
       }
       dispatch(deleteUserSuccess(data));
+      localStorage.setItem("userRole", " ");
       navigate("/login");
     } catch (error) {
       dispatch(deleteUserFailure(data?.message));
@@ -226,7 +227,7 @@ const UserProfile = () => {
 
   console.log(
     "----- ",
-    !userData,
+    !data,
     !healthStats,
     !latestHealthReport,
     !monthlyStats,
@@ -234,7 +235,7 @@ const UserProfile = () => {
     !assignment
   );
   if (
-    !userData ||
+    !data ||
     !healthStats ||
     !latestHealthReport ||
     !monthlyStats ||
@@ -250,25 +251,25 @@ const UserProfile = () => {
         return (
           <div className="general">
             <div className="general-info">
-              <p>Diagnosed Course: {userData.diagnosedCourse}</p>
-              <p>Full name: {userData.fullName}</p>
-              <p>Course Start Date: {userData.courseStartDate}</p>
-              <p>Assumed Course End Date: {userData.courseEndDate}</p>
-              <p>Patient Code: {userData.patientCode}</p>
+              <p>Diagnosed Course: {data.diagnosedCourse}</p>
+              <p>Full name: {data.fullName}</p>
+              <p>Course Start Date: {data.courseStartDate}</p>
+              <p>Assumed Course End Date: {data.courseEndDate}</p>
+              <p>Patient Code: {data.patientCode}</p>
             </div>
-
             <div className="health-center-details">
-              <h3>Health Center Details</h3>
-              <p>Pincode: {userData.healthCenter?.pincode}</p>
-              <p>District: {userData.healthCenter?.district}</p>
-              <p>State: {userData.healthCenter?.state}</p>
-              <p>Address: {userData.healthCenter?.address}</p>
-            </div>
-
-            <div className="center-contact">
-              <h3>Center Contact</h3>
-              <p>Phone: {userData.healthCenter?.phone}</p>
-              <p>Email: {userData.healthCenter?.email}</p>
+              <div>
+                <h3>Health Center Details</h3>
+                <p>Pincode: {data.healthCenter?.pincode}</p>
+                <p>District: {data.healthCenter?.district}</p>
+                <p>State: {data.healthCenter?.state}</p>
+                <p>Address: {data.healthCenter?.address}</p>
+              </div>
+              <div>
+                <h3>Center Contact</h3>
+                <p>Phone: {data.healthCenter?.phone}</p>
+                <p>Email: {data.healthCenter?.email}</p>
+              </div>
             </div>
 
             <div className="health-reports">
@@ -309,7 +310,7 @@ const UserProfile = () => {
       case "bookings":
         return (
           <div className="bookings-log">
-            {data.bookingsLog.map((booking, index) => (
+            {healthStats.bookingsLog?.map((booking, index) => (
               <div key={index} className="booking-entry">
                 <img
                   src={booking.image}
@@ -317,14 +318,19 @@ const UserProfile = () => {
                   className="patient-image"
                 />
                 <div className="booking-info">
-                  <p>
-                    <strong>{booking.patientName}</strong>
-                  </p>
-                  <p>{booking.TestName}</p>
-                  <p>
-                    <strong>Status:</strong> {booking.status}
-                  </p>
-                  <p>{booking.time}</p>
+                  <div>
+                    {" "}
+                    <p>
+                      <strong>{booking.patientName}</strong>
+                    </p>
+                    <p>{booking.TestName}</p>
+                  </div>
+                  <div>
+                    <p>
+                      <strong>Status:</strong> {booking.status}
+                    </p>
+                    <p>{booking.time}</p>
+                  </div>
                 </div>
                 <div className="booking-actions">
                   {booking.status === "Waiting" ? (
@@ -348,7 +354,7 @@ const UserProfile = () => {
       case "records":
         return (
           <div className="records">
-            {data.records.map((record, index) => (
+            {healthStats.records.map((record, index) => (
               <div key={index} className="records-entry">
                 <p>{record.SiNumber}</p>
                 <div className="records-details">
@@ -386,14 +392,10 @@ const UserProfile = () => {
       </header>
 
       <div className="profile-header">
-        <img
-          src={userData.avatar}
-          alt={userData.username}
-          className="profile-image"
-        />
+        <img src={data.avatar} alt={data.username} className="profile-image" />
         <div className="profile-info">
-          <h2>{userData.username}</h2>
-          <p>Email: {userData.email}</p>
+          <h2>{data.username}</h2>
+          <p>Email: {data.email}</p>
         </div>
       </div>
 
@@ -460,7 +462,7 @@ export default UserProfile;
 // import "./UserProfile.css";
 
 // const UserProfile = () => {
-//   const [userData, setUserData] = useState({
+//   const [data, setUserData] = useState({
 //     username: "Roy Anderhat",
 //     email: "roy.anderhat@example.com",
 //     avatar: "https://via.placeholder.com/150",
@@ -549,13 +551,13 @@ export default UserProfile;
 
 //       <div className="profile-header">
 //         <img
-//           src={userData.avatar}
-//           alt={userData.username}
+//           src={data.avatar}
+//           alt={data.username}
 //           className="profile-image"
 //         />
 //         <div className="profile-info">
-//           <h2>{userData.username}</h2>
-//           <p>Email: {userData.email}</p>
+//           <h2>{data.username}</h2>
+//           <p>Email: {data.email}</p>
 //         </div>
 //       </div>
 
@@ -569,25 +571,25 @@ export default UserProfile;
 
 //       <div className="general">
 //         <div className="general-info">
-//           <p>Diagnosed Course: {userData.diagnosedCourse}</p>
-//           <p>Full name: {userData.fullName}</p>
-//           <p>Course Start Date: {userData.courseStartDate}</p>
-//           <p>Assumed Course End Date: {userData.courseEndDate}</p>
-//           <p>Patient Code: {userData.patientCode}</p>
+//           <p>Diagnosed Course: {data.diagnosedCourse}</p>
+//           <p>Full name: {data.fullName}</p>
+//           <p>Course Start Date: {data.courseStartDate}</p>
+//           <p>Assumed Course End Date: {data.courseEndDate}</p>
+//           <p>Patient Code: {data.patientCode}</p>
 //         </div>
 
 //         <div className="health-center-details">
 //           <h3>Health Center Details</h3>
-//           <p>Pincode: {userData.healthCenter.pincode}</p>
-//           <p>District: {userData.healthCenter.district}</p>
-//           <p>State: {userData.healthCenter.state}</p>
-//           <p>Address: {userData.healthCenter.address}</p>
+//           <p>Pincode: {data.healthCenter.pincode}</p>
+//           <p>District: {data.healthCenter.district}</p>
+//           <p>State: {data.healthCenter.state}</p>
+//           <p>Address: {data.healthCenter.address}</p>
 //         </div>
 
 //         <div className="center-contact">
 //           <h3>Center Contact</h3>
-//           <p>Phone: {userData.healthCenter.phone}</p>
-//           <p>Email: {userData.healthCenter.email}</p>
+//           <p>Phone: {data.healthCenter.phone}</p>
+//           <p>Email: {data.healthCenter.email}</p>
 //         </div>
 
 //         <div className="health-reports">

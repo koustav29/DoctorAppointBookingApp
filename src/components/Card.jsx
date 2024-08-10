@@ -15,9 +15,10 @@ function Card() {
           className="card"
           id="RouterNavLink"
           to={`/details/${item._id}`}
+          key={index}
           style={{ marginBottom: "40px" }}
         >
-          <section key={index} style={{ margin: "0" }}>
+          <section style={{ margin: "0" }}>
             <div className="card-top">
               <img src={item.imageUrls} height={10} />
               <div className="lab-info-listing">

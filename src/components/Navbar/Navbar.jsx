@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const { isLoggedIn, currentUser } = useSelector((state) => state.user);
+  const userRole = localStorage.getItem("userRole");
   const toggleProfileMenu = () => {
     setProfileMenuOpen(!profileMenuOpen);
   };
@@ -23,10 +24,13 @@ const Navbar = () => {
           </button>
         </div>
         <nav className="nav-items">
-          <a href="/">Home</a>
+          {(userRole == undefined || userRole == 0) && <a href="/">Home</a>}
+          {userRole == 1 && <a href="/labs-onboarding">Labs Onboarding</a>}
+          {userRole == 1 && <a href="/lab-dashboard">Labs Dashboard</a>}
+          {(userRole == undefined || userRole == 0) && (
+            <a href="/listing">Services</a>
+          )}
           <a href="/about">About Us</a>
-          <a href="/listing">Services</a>
-          <a href="/labs">Labs</a>
           <a href="/blog">Blogs</a>
           {/* <a href="contact">Contact</a> */}
         </nav>
