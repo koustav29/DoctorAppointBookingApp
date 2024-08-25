@@ -3,10 +3,20 @@ import "./TestOffered.css";
 import Sidebar from "../Sidebar";
 
 function TestOffered() {
-  const [tests, setTests] = useState([
-    { name: "Blood Test", description: "Complete blood count", price: "1300" },
-    { name: "Urine Analysis", description: "Urinalysis test", price: "500" },
-    { name: "X-Ray", description: "Chest X-ray", price: "1100" },
+  const [productList, setProductList] = useState([
+    {
+      name: "",
+      description: "",
+      sampleName: "",
+      sampleType: "",
+      vialName: "",
+      preparationTime: "",
+      price: "",
+      sampleCollection: [],
+      availability: [],
+      features: [],
+      availableTimeSlots: [],
+    },
   ]);
 
   const [newTest, setNewTest] = useState({
@@ -65,7 +75,7 @@ function TestOffered() {
   };
 
   const addTest = () => {
-    setTests([...tests, newTest]);
+    setProductList([...productList, newTest]);
     setNewTest({
       name: "",
       description: "",
@@ -82,20 +92,20 @@ function TestOffered() {
   };
 
   const deleteTest = (index) => {
-    setTests(tests.filter((_, i) => i !== index));
+    setProductList(productList.filter((_, i) => i !== index));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const payload = {
-      tests,
+      labRef: "labID",
+      productList,
     };
 
     console.log("Payload:", payload);
 
-    // Replace with your POST request logic
-    fetch("https://your-api-endpoint.com/save-test-details", {
+    fetch(`/api/product/create`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -113,7 +123,7 @@ function TestOffered() {
 
   return (
     <>
-      <Sidebar />
+      {/* <Sidebar /> */}
       <div className="TestOffered">
         <section className="tests-offered">
           <h2>Tests Offered</h2>
@@ -311,7 +321,7 @@ function TestOffered() {
         <section className="saved-tests">
           <h2>Saved Tests</h2>
           <div className="test-cards">
-            {tests.map((test, index) => (
+            {productList.map((test, index) => (
               <div className="test-card" key={index}>
                 <div
                   className="delete-button"

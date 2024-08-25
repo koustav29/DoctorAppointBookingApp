@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import "swiper/css/bundle";
 import { Navigation } from "swiper/modules";
+import TestOffered from "../Lab-dashboard/Test-offered/TestOffered";
 
 function Details() {
   SwiperCore.use([Navigation]);
@@ -18,6 +19,7 @@ function Details() {
   const [copied, setCopied] = useState(false);
   const [contact, setContact] = useState(false);
   const params = useParams();
+  const isLabOwner = localStorage.getItem("userRole");
 
   useEffect(() => {
     console.log("paraams - ", params);
@@ -43,7 +45,7 @@ function Details() {
   }, [params?.listingId]);
 
   return (
-    <>
+    <div className="details">
       {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
       {error && (
         <p className="text-center my-7 text-2xl">Something went wrong!</p>
@@ -75,11 +77,13 @@ function Details() {
                   {listing.address}
                 </p>
               </div>
-              <a href="/make-booking">
-                <button className="px-6 py-2 bg-teal-500 text-white rounded-md">
-                  Make Booking
-                </button>
-              </a>
+              {isLabOwner === 0 && (
+                <a href="/make-booking">
+                  <button className="px-6 py-2 bg-teal-500 text-white rounded-md">
+                    Make Booking
+                  </button>
+                </a>
+              )}
             </div>
             <p className="mt-6 text-gray-700">{listing.description}</p>
             {/* <div className="max-w-md mx-auto mt-10 p-8 border border-blue-500 rounded-md">
@@ -121,15 +125,10 @@ function Details() {
           </form>
         </div> */}
           </div>
-          {/* <div className="card-slider">
-            <center>
-              <h1>Other Listed Lab</h1>
-            </center>
-            <Slider data={listingData} />
-          </div> */}
+          {isLabOwner == 1 && isLabOwner != undefined && <TestOffered />}
         </div>
       )}
-    </>
+    </div>
   );
 }
 

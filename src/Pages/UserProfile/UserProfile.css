@@ -12,8 +12,8 @@ header {
 
 .back-button,
 .logout-button {
-  background-color: #56BBB3;
-  color: white;
+  color: #56BBB3;
+  background-color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -37,14 +37,23 @@ header {
   margin: 0;
 }
 
-.edit-profile-button {
-  background-color: #56BBB3;
-  color: white;
+.edit-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #56BBB3;
   border: none;
   padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 20px;
+}
+
+.edit-profile-form input,
+.edit-profile-form button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .profile-nav {
@@ -79,6 +88,8 @@ header {
   background-color: #f1f1f1;
   padding: 20px;
   border-radius: 5px;
+  display: flex;
+  width: 40vw;
 }
 
 .health-reports {

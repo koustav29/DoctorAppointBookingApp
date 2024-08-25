@@ -6,7 +6,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import "./Slider.css";
-import dt from "../../db/data";
 import { Link } from "react-router-dom";
 
 function Sp({ data }) {

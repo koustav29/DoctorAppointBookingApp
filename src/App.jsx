@@ -15,8 +15,10 @@ import OtpValidation from "./components/OtpValidation/OtpValidation";
 import LabsOnboarding from "./Pages/Labs-onboarding/Labs-onboarding";
 import Blog from "./Pages/Blog/Blog";
 import MakeBooking from "./Pages/MakeBooking/MakeBooking";
+import AllLabs from "./Pages/Lab-dashboard/AllLabs";
 import TestOffered from "./Pages/Lab-dashboard/Test-offered/TestOffered";
 import UserProfile from "./Pages/UserProfile/UserProfile";
+import LabCards from "./Pages/Lab-dashboard/LabCards";
 
 function App() {
   return (
@@ -35,8 +37,8 @@ function App() {
         <Route path="/listing" element={<Listing />} />
         <Route path="/about" element={<About />} />
         <Route path="/details/:listingId" element={<Details />} />
-
         <Route path="/bookings" element={<Bookings />} />
+        <Route path="/labs" element={<LabCards />} />
         <Route path="/test" element={<TestOffered />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/make-booking" element={<MakeBooking />} />

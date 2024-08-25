@@ -65,7 +65,11 @@ const Login = () => {
       // }
       // setLoading(false);
       // setError(null);
+      // if (userRole === "1") {
+      //   navigate("/lab-dashboard");
+      // } else {
       navigate("/");
+      //}
     } catch (error) {
       // setLoading(false);
       // setError(error.message);

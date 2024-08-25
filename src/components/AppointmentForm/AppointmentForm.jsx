@@ -64,10 +64,12 @@ const AppointmentForm = () => {
             <input type="text" placeholder="DD-Month, 20YY" />
           </label>
         </div>
-        <button className="search-button">
-          <FaSearch />
-          <span>Search</span>
-        </button>
+        <a href="/listing">
+          <button className="search-button">
+            <FaSearch />
+            <span>Search</span>
+          </button>
+        </a>
       </div>
     </div>
   );
