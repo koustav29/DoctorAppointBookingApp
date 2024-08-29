@@ -13,7 +13,7 @@ function LabCards() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/listing/get");
+        const response = await fetch("/api/lab/lab/owner");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -41,12 +41,9 @@ function LabCards() {
               >
                 <section style={{ margin: "0" }}>
                   <div className="card-top">
-                    <img src={item.imageUrls} height={10} />
+                    <img src={item.labImageUrls} height={10} />
                     <div className="lab-info-listing">
-                      <span>
-                        {item.name}
-                        <br /> {item.type}
-                      </span>
+                      <span>{item.labName}</span>
                     </div>
                   </div>
                   <div className="card-bottom">
@@ -54,7 +51,10 @@ function LabCards() {
                       <div className="location-icon">
                         <FontAwesomeIcon icon={faLocationArrow} />
                       </div>
-                      <p>{item.address}</p>
+                      <p>
+                        {item.labAddress}, {item.labCity}, {item.labState},{" "}
+                        {item.labPin}
+                      </p>
                     </section>
                     <a href="details">
                       <button className="tests">Get Details</button>

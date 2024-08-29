@@ -14,7 +14,7 @@ function Sp({ data }) {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: data.length > 3 ? 4 : 3,
     slidesToScroll: 4,
     initialSlide: 0,
     responsive: [
@@ -53,12 +53,9 @@ function Sp({ data }) {
               <Link to={`/details/${item._id}`} key={index}>
                 <section className="slider-card">
                   <div className="card-top">
-                    <img src={item.imageUrls} height={10} />
+                    <img src={item.labImageUrls} height={10} />
                     <div className="lab-info-listing">
-                      <span>
-                        {item.name}
-                        <br /> {item.type}
-                      </span>
+                      <span>{item.labName}</span>
                     </div>
                   </div>
                   <div className="card-bottom">
@@ -66,7 +63,10 @@ function Sp({ data }) {
                       <div className="location-icon">
                         <FontAwesomeIcon icon={faLocationArrow} />
                       </div>
-                      <p>{item.address}</p>
+                      <p>
+                        {item.labAddress}, {item.labCity}, {item.labState},{" "}
+                        {item.labPin}
+                      </p>
                     </section>
                     {/* <a href="details"> */}
                     <button className="tests">View Tests and Packages</button>

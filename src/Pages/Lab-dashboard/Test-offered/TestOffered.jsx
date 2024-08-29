@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./TestOffered.css";
-import Sidebar from "../Sidebar";
 
 function TestOffered() {
   const [productList, setProductList] = useState([

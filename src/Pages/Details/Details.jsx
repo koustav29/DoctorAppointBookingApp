@@ -26,7 +26,7 @@ function Details() {
     const fetchListing = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/listing/get/${params?.listingId}`);
+        const res = await fetch(`/api/lab/get/${params?.listingId}`);
         const data = await res.json();
         if (data.success === false) {
           setError(true);
@@ -53,7 +53,7 @@ function Details() {
       {listing && !loading && !error && (
         <div>
           <Swiper navigation>
-            {listing?.imageUrls.map((url) => (
+            {listing?.labImageUrls.map((url) => (
               <SwiperSlide key={url}>
                 <div
                   className="h-[550px]"
@@ -70,14 +70,15 @@ function Details() {
             <div className="flex justify-between items-center">
               <div>
                 <h2 className="text-3xl font-bold text-teal-600">
-                  {listing.name}
+                  {listing.labName}
                 </h2>
                 <p className="text-gray-600 flex items-center mt-2">
                   <FaMapMarkerAlt className="mr-2" />
-                  {listing.address}
+                  {listing.labAddress}, {listing.labCity}, {listing.labState},{" "}
+                  {listing.labPin}
                 </p>
               </div>
-              {isLabOwner === 0 && (
+              {isLabOwner == 0 && (
                 <a href="/make-booking">
                   <button className="px-6 py-2 bg-teal-500 text-white rounded-md">
                     Make Booking

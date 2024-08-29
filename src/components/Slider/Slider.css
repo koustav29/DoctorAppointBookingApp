@@ -97,6 +97,7 @@
 .lab-info-listing {
   display: flex;
   justify-content: center;
+  color: #56BBB3;;
 }
 
 .lab-cards {

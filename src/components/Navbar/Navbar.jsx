@@ -5,6 +5,7 @@ import "./Navbar.css";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom"; // If using React Router for navigation
 import { useSelector } from "react-redux";
+import logo from "../../assets/ADVA8_SOLID_LOGO.png";
 
 const Navbar = () => {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
@@ -16,7 +17,9 @@ const Navbar = () => {
   return (
     <>
       <div className="top-menu">
-        <div className="logo">LOGO</div>
+        <div className="logo">
+          <img src={logo} alt="ADVA8" />
+        </div>
         <div className="search-bar">
           <input type="text" placeholder="Search" />
           <button className="search-button">

@@ -15,7 +15,7 @@ function LabsOnboarding() {
     labEmail: "",
     labWebsite: "",
     labOperatingDays: [],
-    imageUrls: [],
+    labImageUrls: [],
     labOpeningTime: "",
     labClosingTime: "",
   });
@@ -44,7 +44,7 @@ function LabsOnboarding() {
     const files = e.target.files;
     if (!files) return;
 
-    const uploadedUrls = [...labDetails.imageUrls];
+    const uploadedUrls = [...labDetails.labImageUrls];
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
@@ -66,7 +66,7 @@ function LabsOnboarding() {
 
     setLabDetails((prevDetails) => ({
       ...prevDetails,
-      imageUrls: uploadedUrls,
+      labImageUrls: uploadedUrls,
     }));
 
     setImageUrl(uploadedUrls); // Set the uploaded URLs to display
