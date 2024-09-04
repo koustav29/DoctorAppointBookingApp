@@ -43,7 +43,7 @@ function Details() {
     };
     fetchListing();
   }, [params?.listingId]);
-
+  const currentLabId = params?.listingId;
   return (
     <div className="details">
       {loading && <p className="text-center my-7 text-2xl">Loading...</p>}
@@ -126,7 +126,9 @@ function Details() {
           </form>
         </div> */}
           </div>
-          {isLabOwner == 1 && isLabOwner != undefined && <TestOffered />}
+          {isLabOwner == 1 && isLabOwner != undefined && (
+            <TestOffered labId={currentLabId} />
+          )}
         </div>
       )}
     </div>

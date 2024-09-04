@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./TestOffered.css";
 
-function TestOffered() {
+function TestOffered(props) {
   const [productList, setProductList] = useState([
     {
       name: "",
@@ -98,7 +98,7 @@ function TestOffered() {
     e.preventDefault();
 
     const payload = {
-      labRef: "labID",
+      labRef: props.labId, // Use the fetched lab ID here
       productList,
     };
 
@@ -122,7 +122,6 @@ function TestOffered() {
 
   return (
     <>
-      {/* <Sidebar /> */}
       <div className="TestOffered">
         <section className="tests-offered">
           <h2>Tests Offered</h2>
