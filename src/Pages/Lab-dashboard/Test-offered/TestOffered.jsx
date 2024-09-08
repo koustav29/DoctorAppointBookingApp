@@ -2,21 +2,40 @@ import React, { useState, useEffect } from "react";
 import "./TestOffered.css";
 
 function TestOffered(props) {
-  const [productList, setProductList] = useState([
-    {
-      name: "",
-      description: "",
-      sampleName: "",
-      sampleType: "",
-      vialName: "",
-      preparationTime: "",
-      price: "",
-      sampleCollection: [],
-      availability: [],
-      features: [],
-      availableTimeSlots: [],
-    },
-  ]);
+  const [productList, setProductList] = useState([]);
+  const [isNewLab, setIsNewLab] = useState(true);
+
+  useEffect(() => {
+    fetchSavedTests();
+  }, []);
+
+  const fetchSavedTests = () => {
+    fetch(`/api/product/get/${props.labId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (
+          data &&
+          Array.isArray(data) &&
+          data.length > 0 &&
+          data.some(
+            (item) => item.productList && Array.isArray(item.productList)
+          )
+        ) {
+          const allProducts = data.flatMap((item) => item.productList || []);
+          setProductList(allProducts);
+          setIsNewLab(false);
+        } else {
+          console.error("Invalid data format received:", data);
+          setProductList([]);
+          setIsNewLab(true);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching saved tests:", error);
+        setProductList([]);
+        setIsNewLab(true);
+      });
+  };
 
   const [newTest, setNewTest] = useState({
     name: "",
@@ -75,19 +94,6 @@ function TestOffered(props) {
 
   const addTest = () => {
     setProductList([...productList, newTest]);
-    setNewTest({
-      name: "",
-      description: "",
-      sampleName: "",
-      sampleType: "",
-      vialName: "",
-      preparationTime: "",
-      price: "",
-      sampleCollection: [],
-      availability: [],
-      features: [],
-      availableTimeSlots: [],
-    });
   };
 
   const deleteTest = (index) => {
@@ -98,13 +104,17 @@ function TestOffered(props) {
     e.preventDefault();
 
     const payload = {
-      labRef: props.labId, // Use the fetched lab ID here
+      labRef: props.labId,
       productList,
     };
 
     console.log("Payload:", payload);
 
-    fetch(`/api/product/create`, {
+    const apiEndpoint = isNewLab
+      ? `/api/product/create`
+      : `/api/product/update/${props.labId}`;
+
+    fetch(apiEndpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -114,6 +124,7 @@ function TestOffered(props) {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        alert("Test added successfully");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -325,11 +336,11 @@ function TestOffered(props) {
                   className="delete-button"
                   onClick={() => deleteTest(index)}
                 >
-                  &#10005;
+                  ✕
                 </div>
-                <h3>{test.name}</h3>
-                <p>{test.description}</p>
-                <p>{test.price}</p>
+                <h3>{test.name || "N/A"}</h3>
+                <p>{test.description || "N/A"}</p>
+                <p>{test.price || "N/A"}</p>
               </div>
             ))}
           </div>
